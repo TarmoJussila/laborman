@@ -160,12 +160,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 0
-  m_RunSpeed: 0
+  m_WalkSpeed: 5
+  m_RunSpeed: 10
   m_RunstepLenghten: 0
-  m_JumpSpeed: 0
+  m_JumpSpeed: 5
   m_StickToGroundForce: 0
-  m_GravityMultiplier: 0
+  m_GravityMultiplier: 1
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
@@ -174,7 +174,7 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
+    lockCursor: 0
   m_UseFovKick: 0
   m_FovKick:
     Camera: {fileID: 0}
