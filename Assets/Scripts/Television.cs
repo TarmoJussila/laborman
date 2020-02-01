@@ -30,9 +30,9 @@ public class Television : MonoBehaviour
             if (!string.IsNullOrWhiteSpace(cityName) && !string.IsNullOrWhiteSpace(countryName))
             {
                 string weatherText = "WEATHER:" + "\n" +
-                cityName + ", " + countryName + "\n" +
+                cityName + ", " + countryName + "\n" + "\n" +
                 weather + ", " + weatherDescription + "\n" + "\n" +
-                "WIND: " + windDegree + "\n" + "\n" +
+                "WIND: " + windDegree + "\n" +
                 "SPEED: " + windSpeed;
 
                 text.text = weatherText;
