@@ -70,8 +70,6 @@ public class LocaleController : MonoBehaviour
         {
             string locationJson = locationRequest.text;
 
-            Debug.Log(locationJson);
-
             if (!string.IsNullOrEmpty(locationJson))
             {
                 string[] lines = locationJson.Split(new string[] { Environment.NewLine, "," }, StringSplitOptions.None);
@@ -242,7 +240,7 @@ public class LocaleController : MonoBehaviour
             if (parse != null && parse.Length > 0)
             {
                 var last = parse[parse.Length - 1];
-                last = last.Trim(new char[] { '"', ',' });
+                last = last.Trim(new char[] { '"', ',', '{', '}' });
                 var check = last.Split(new string[] { "/" }, StringSplitOptions.None);
                 value = check[check.Length - 1];
             }
