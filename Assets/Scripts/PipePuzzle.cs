@@ -17,6 +17,11 @@ public class PipePuzzle : Puzzle
     [SerializeField]
     PipePuzzleBlock[] Empty;
 
+    [SerializeField]
+    Material greenMat;
+    [SerializeField]
+    GameObject redLight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,11 +50,11 @@ public class PipePuzzle : Puzzle
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckCompletion()
     {
 
     }
+
 }
 
 public struct Coordinate
