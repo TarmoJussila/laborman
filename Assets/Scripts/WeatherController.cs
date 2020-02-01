@@ -116,7 +116,10 @@ public class WeatherController : MonoBehaviour
                 {
                     if (lines[i].Contains(weatherKey))
                     {
-                        currentWeather = GetValueWithKey(lines[i], weatherKey);
+                        if (string.IsNullOrEmpty(currentWeather))
+                        {
+                            currentWeather = GetValueWithKey(lines[i], weatherKey);
+                        }
                     }
                     else if (lines[i].Contains(weatherDescriptionKey))
                     {
