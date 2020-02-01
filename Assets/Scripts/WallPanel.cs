@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class WallPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool Covered = true;
+    private Rigidbody coverRb;
+
+    public void DetachCover()
     {
-        
+        Covered = false;
+        coverRb.isKinematic = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AttachCover(GameObject Cover)
     {
-        
+        Cover.transform.position = transform.position;
+        Cover.transform.forward = transform.forward;
+        Covered = true;
+        coverRb.isKinematic = true;
     }
 }
