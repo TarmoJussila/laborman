@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlagTextureFetcher : MonoBehaviour
 {
     [SerializeField] private SkinnedMeshRenderer flagRenderer;
+    [SerializeField] private bool fetchFlagAngle = true;
 
     private Material flagMaterial;
 
@@ -29,6 +30,17 @@ public class FlagTextureFetcher : MonoBehaviour
             {
                 flagMaterial.mainTexture = flagTexture;
                 yield break;
+            }
+
+            if (fetchFlagAngle)
+            {
+                string windDegreeString = LocaleController.Instance.CurrentWindDegree;
+
+                float windDegree = transform.eulerAngles.y;
+                if (float.TryParse(windDegreeString, out windDegree))
+                {
+                    transform.rotation = Quaternion.Euler(transform.eulerAngles.x, windDegree, transform.eulerAngles.z);
+                }
             }
         }
     }
