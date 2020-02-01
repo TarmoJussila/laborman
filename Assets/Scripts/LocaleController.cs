@@ -15,7 +15,9 @@ public class LocaleController : MonoBehaviour
     public string CurrentCityName { get; private set; }
     public Sprite CurrentFlagSprite { get; private set; }
 
-    [SerializeField] private SpriteRenderer flagRenderer;
+    [Header("Debug Settings")]
+    [SerializeField] private string overrideIP = "173.162.43.195";
+    [SerializeField] private bool useOverrideIP = false;
 
     // OpenWeatherMap.
     private readonly string openWeatherMapUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
@@ -57,7 +59,7 @@ public class LocaleController : MonoBehaviour
 
     private IEnumerator GetLocation()
     {
-        string ip = IPManager.GetIP(IpVersion.IPv6);
+        string ip = useOverrideIP ? overrideIP : IPManager.GetIP(IpVersion.IPv6);
 
         WWW locationRequest = new WWW(geoPluginUrl + ip);
 
@@ -203,7 +205,6 @@ public class LocaleController : MonoBehaviour
             if (texture != null)
             {
                 var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f));
-                flagRenderer.sprite = sprite;
                 CurrentFlagSprite = sprite;
             }
         }
