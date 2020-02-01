@@ -7,7 +7,7 @@ public enum IpVersion
     IPv4, IPv6
 }
 
-public class IPManager
+public static class IPUtility
 {
     public static string GetIP(IpVersion ipVersion)
     {
