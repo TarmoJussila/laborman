@@ -11,13 +11,17 @@ public class IPManager
 {
     public static string GetIP(IpVersion ipVersion)
     {
-        // Return null if IpVersion is IPv6 but OS does not support it.
         if (ipVersion == IpVersion.IPv6 && !Socket.OSSupportsIPv6)
+        {
+            ipVersion = IpVersion.IPv4; // Fallback to IPv4 if OS does not support IPv6.
+        }
+
+        if (ipVersion == IpVersion.IPv4 && !Socket.OSSupportsIPv4)
         {
             return null;
         }
 
-        string output = "";
+        string output = string.Empty;
 
         foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
         {
