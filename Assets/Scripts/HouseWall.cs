@@ -5,7 +5,9 @@ using UnityEngine;
 public class HouseWall : MonoBehaviour
 {
     [SerializeField]
-    private List<WallPanel> Panels = new List<WallPanel>();
+    private List<WallPanel> InnerPanels = new List<WallPanel>();
+    [SerializeField]
+    private List<WallPanel> OuterPanels = new List<WallPanel>();
     [SerializeField]
     private GameObject WindowObject;
 
@@ -15,17 +17,13 @@ public class HouseWall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SetWindow(CanBeWindow);
     }
 
     public void SetWindow(bool isWindow)
     {
         WindowObject.SetActive(isWindow && CanBeWindow);
+        InnerPanels[1].gameObject.SetActive(!isWindow);
+        OuterPanels[1].gameObject.SetActive(!isWindow);
     }
 }

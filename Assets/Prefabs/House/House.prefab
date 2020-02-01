@@ -161,7 +161,6 @@ Transform:
   m_Children:
   - {fileID: 8122999103236416170}
   - {fileID: 8122999104439837773}
-  - {fileID: 8911262060609130750}
   - {fileID: 8122999104254839017}
   - {fileID: 8122999104719445010}
   m_Father: {fileID: 0}
@@ -204,7 +203,7 @@ Transform:
   - {fileID: 8911262059732640707}
   - {fileID: 8911262060915987516}
   m_Father: {fileID: 8122999104193995001}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8122999104439837770
 GameObject:
@@ -241,6 +240,7 @@ Transform:
   - {fileID: 8911262059447571046}
   - {fileID: 8911262059229304972}
   - {fileID: 8911262059171338501}
+  - {fileID: 8911262060609130750}
   m_Father: {fileID: 8122999104193995001}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,7 +273,7 @@ Transform:
   m_Children:
   - {fileID: 8122999103420437186}
   m_Father: {fileID: 8122999104193995001}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8122999102796160333
 PrefabInstance:
@@ -337,10 +337,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 864038919851796882, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2394687609277531063, guid: ec4edb437334ae24693eec276b43de70,
         type: 3}
       propertyPath: m_Name
       value: PuzzleRoom (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
@@ -417,6 +427,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StairStart
       objectReference: {fileID: 0}
+    - target: {fileID: 4835998375021443693, guid: 893f21b4f489e854fbdd231a22cd1028,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5360390693512464828, guid: 893f21b4f489e854fbdd231a22cd1028,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -492,10 +507,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 864038919851796882, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2394687609277531063, guid: ec4edb437334ae24693eec276b43de70,
         type: 3}
       propertyPath: m_Name
       value: PuzzleRoom (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
@@ -571,6 +596,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StairEndRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473438224978394150, guid: 08229c31cedb38a4a9ed0b369d37dd4f,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046804248496146295, guid: 08229c31cedb38a4a9ed0b369d37dd4f,
+        type: 3}
+      propertyPath: m_Name
+      value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046804248496146295, guid: 08229c31cedb38a4a9ed0b369d37dd4f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382234919795774677, guid: 08229c31cedb38a4a9ed0b369d37dd4f,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08229c31cedb38a4a9ed0b369d37dd4f, type: 3}
@@ -792,10 +837,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 864038919851796882, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2394687609277531063, guid: ec4edb437334ae24693eec276b43de70,
         type: 3}
       propertyPath: m_Name
       value: PuzzleRoom (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
@@ -872,6 +927,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleRoom (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
 --- !u!4 &8911262059331963975 stripped
@@ -946,6 +1006,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PuzzleRoom (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
@@ -1172,6 +1237,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleRoom (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
 --- !u!4 &8911262059176224013 stripped
@@ -1246,6 +1316,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StairEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167812620794741213, guid: 6eee7550c7b67bc45b12836736f162a5,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eee7550c7b67bc45b12836736f162a5, type: 3}
@@ -1397,6 +1472,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleRoom (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527853351439314365, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
 --- !u!4 &8911262059447571046 stripped
@@ -1415,7 +1500,7 @@ PrefabInstance:
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04999733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
@@ -1772,6 +1857,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleRoom (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527853351439314365, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
 --- !u!4 &8911262060478125314 stripped
@@ -1917,10 +2012,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 864038919851796882, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2394687609277531063, guid: ec4edb437334ae24693eec276b43de70,
         type: 3}
       propertyPath: m_Name
       value: PuzzleRoom (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
@@ -1997,6 +2102,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527853351439314365, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
 --- !u!4 &8911262060250782540 stripped
@@ -2072,6 +2187,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleRoom (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3083312520516657130, guid: ec4edb437334ae24693eec276b43de70,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4edb437334ae24693eec276b43de70, type: 3}
 --- !u!4 &8911262060747159681 stripped
@@ -2085,7 +2205,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8122999104193995001}
+    m_TransformParent: {fileID: 8122999104439837773}
     m_Modifications:
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
@@ -2095,7 +2215,7 @@ PrefabInstance:
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.25
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
@@ -2105,17 +2225,17 @@ PrefabInstance:
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
@@ -2125,7 +2245,7 @@ PrefabInstance:
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 797586854430211959, guid: d0eb073f8278a764f83978d181d047c1,
         type: 3}
@@ -2146,6 +2266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HallEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441369566405209752, guid: d0eb073f8278a764f83978d181d047c1,
+        type: 3}
+      propertyPath: CanBeWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0eb073f8278a764f83978d181d047c1, type: 3}
