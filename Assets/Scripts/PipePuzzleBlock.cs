@@ -72,34 +72,47 @@ public class PipePuzzleBlock : MonoBehaviour
     {
         if (Pipe == PipeType.Corner)
         {
-            //PipeObject.transform.RotateAround
+            PipeObject.transform.Rotate(Vector3.forward, -90.0f);
             switch (FlowDir)
             {
                 case Flow.LeftDown:
                     {
                         FlowDir = Flow.LeftUp;
+                        Sides = new Side[] { Side.Left, Side.Up };
                         break;
                     }
                 case Flow.LeftUp:
                     {
                         FlowDir = Flow.UpRight;
+                        Sides = new Side[] { Side.Up, Side.Right };
                         break;
                     }
                 case Flow.UpRight:
                     {
                         FlowDir = Flow.RightDown;
+                        Sides = new Side[] { Side.Down, Side.Right };
                         break;
                     }
                 case Flow.RightDown:
                     {
                         FlowDir = Flow.LeftDown;
+                        Sides = new Side[] { Side.Left, Side.Down };
                         break;
                     }
             }
         }
-        else if (Pipe == PipeType.Corner)
+        else if (Pipe == PipeType.Straight)
         {
-
+            FlowDir = FlowDir == Flow.LeftRight ? Flow.DownUp : Flow.LeftRight;
+            PipeObject.transform.Rotate(Vector3.forward, -90.0f);
+            if (FlowDir == Flow.LeftRight)
+            {
+                Sides = new Side[] { Side.Left, Side.Right };
+            }
+            else
+            {
+                Sides = new Side[] { Side.Down, Side.Up };
+            }
         }
     }
 
@@ -122,17 +135,24 @@ public class PipePuzzleBlock : MonoBehaviour
 
                 if (straight)
                 {
+                    Pipe = PipeType.Straight;
                     FlowDir = Flow.LeftRight;
                     Sides = new Side[] { Side.Left, Side.Right };
                 }
                 else if (corner)
                 {
+                    Pipe = PipeType.Corner;
                     FlowDir = Flow.UpRight;
                     Sides = new Side[] { Side.Up, Side.Right };
                 }
 
             }
         }
+    }
+
+    public static void GetOpposite()
+    {
+
     }
 }
 

@@ -18,7 +18,7 @@ public class PuzzlePipe : MonoBehaviour
 
     public void PlacePipe(PipePuzzleBlock block)
     {
-        //AttachedBlock = block
+        AttachedBlock = block;
         Placed = true;
         rb.isKinematic = true;
     }

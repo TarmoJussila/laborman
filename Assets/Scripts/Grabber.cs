@@ -67,13 +67,17 @@ public class Grabber : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
+            Debug.Log("R");
             RaycastHit rayhit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, maxDistance))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, maxDistance, GrabbableLayer))
             {
+                Debug.Log("Raycast");
                 if (rayhit.collider.tag.IndexOf("Pipe") > -1)
                 {
+                    Debug.Log("Ray found pipe");
                     rayhit.collider.GetComponent<PuzzlePipe>().AttachedBlock.Rotate();
                 }
             }
