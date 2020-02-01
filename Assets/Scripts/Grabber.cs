@@ -9,7 +9,7 @@ public class Grabber : MonoBehaviour
 
     private bool holding = false;
     private readonly float maxDistance = 3.0f;
-    private readonly float holdDistance = 2.2f;
+    private readonly float holdDistance = 2.6f;
     private RaycastHit hit;
     private Rigidbody holdingRb;
 
@@ -21,7 +21,6 @@ public class Grabber : MonoBehaviour
     {
         if (holding)
         {
-            Debug.Log("move obj");
             Vector3 targetPos = Camera.main.transform.position + Camera.main.transform.forward * holdDistance;
             float distance = Vector3.Distance(holdingRb.transform.position, targetPos);
             Vector3 dir = targetPos - holdingRb.position;
@@ -41,7 +40,6 @@ public class Grabber : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("let go");
                 holding = false;
                 holdingRb.useGravity = true;
                 holdingRb = null;
@@ -49,10 +47,8 @@ public class Grabber : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("try grab");
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistance, GrabbableLayer))
             {
-                Debug.Log("raycast hit");
                 holdingRb = hit.collider.GetComponent<Rigidbody>();
                 holdingRb.isKinematic = false;
                 holdingRb.transform.SetParent(null);
