@@ -70,9 +70,11 @@ public class LocaleController : MonoBehaviour
         {
             string locationJson = locationRequest.text;
 
+            Debug.Log(locationJson);
+
             if (!string.IsNullOrEmpty(locationJson))
             {
-                string[] lines = locationJson.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                string[] lines = locationJson.Split(new string[] { Environment.NewLine, "," }, StringSplitOptions.None);
 
                 for (int i = 0; i < lines.Length; i++)
                 {
