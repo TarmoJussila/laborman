@@ -127,7 +127,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4352642
+  m_Name: pb_Mesh-9039816
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -355,6 +355,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2014369770, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: dragCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014369770, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: DragForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014369770, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: dragCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014369770, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: dragCurve.m_Curve.Array.data[1].value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014369770, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: dragCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014369770, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: dragCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1001 &1407789494
@@ -423,6 +447,31 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 14a7b74c0c83d124ea603dc8aed8c836, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338691058785433524, guid: 14a7b74c0c83d124ea603dc8aed8c836,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.0643253
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338691058785433524, guid: 14a7b74c0c83d124ea603dc8aed8c836,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.0000074807285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338691058785433524, guid: 14a7b74c0c83d124ea603dc8aed8c836,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.15000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338691058785433524, guid: 14a7b74c0c83d124ea603dc8aed8c836,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.25481805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338691058785433524, guid: 14a7b74c0c83d124ea603dc8aed8c836,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.0000075851576
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a7b74c0c83d124ea603dc8aed8c836, type: 3}
