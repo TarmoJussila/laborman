@@ -4,6 +4,15 @@ using System;
 
 public class WeatherController : MonoBehaviour
 {
+    public string CurrentWeather { get; private set; }
+    public string CurrentWeatherDescription { get; private set; }
+    public string CurrentWindSpeed { get; private set; }
+    public string CurrentWindDegree { get; private set; }
+    public string CurrentCountryCode { get; private set; }
+    public string CurrentCountryName { get; private set; }
+    public string CurrentCityName { get; private set; }
+    public Sprite CurrentFlagSprite { get; private set; }
+
     [SerializeField] private SpriteRenderer flagRenderer;
 
     // OpenWeatherMap.
@@ -34,15 +43,6 @@ public class WeatherController : MonoBehaviour
     private readonly string fallbackCountryName = "Finland";
     private readonly string fallbackCityName = "Helsinki";
 
-    // Cached values.
-    private string currentWeather;
-    private string currentWeatherDescription;
-    private string currentWindSpeed;
-    private string currentWindDegree;
-    private string currentCountryCode;
-    private string currentCountryName;
-    private string currentCityName;
-
     private void Start()
     {
         StartCoroutine(GetLocation());
@@ -68,24 +68,24 @@ public class WeatherController : MonoBehaviour
                 {
                     if (lines[i].Contains(countryCodeKey))
                     {
-                        currentCountryCode = GetValueWithKey(lines[i], countryCodeKey);
+                        CurrentCountryCode = GetValueWithKey(lines[i], countryCodeKey);
                     }
                     else if (lines[i].Contains(countryNameKey))
                     {
-                        currentCountryName = GetValueWithKey(lines[i], countryNameKey);
+                        CurrentCountryName = GetValueWithKey(lines[i], countryNameKey);
                     }
                     else if (lines[i].Contains(cityNameKey))
                     {
-                        if (string.IsNullOrEmpty(currentCityName))
+                        if (string.IsNullOrEmpty(CurrentCityName))
                         {
-                            currentCityName = GetValueWithKey(lines[i], cityNameKey);
+                            CurrentCityName = GetValueWithKey(lines[i], cityNameKey);
                         }
                     }
                     else if (lines[i].Contains(timeZoneKey))
                     {
-                        if (string.IsNullOrEmpty(currentCityName))
+                        if (string.IsNullOrEmpty(CurrentCityName))
                         {
-                            currentCityName = GetValueWithKey(lines[i], timeZoneKey);
+                            CurrentCityName = GetValueWithKey(lines[i], timeZoneKey);
                         }
                     }
                 }
@@ -96,25 +96,25 @@ public class WeatherController : MonoBehaviour
             Debug.Log(locationRequest.error);
         }
 
-        if (IsNullOrEmpty(currentCountryCode))
+        if (IsNullOrEmpty(CurrentCountryCode))
         {
-            currentCountryCode = fallbackCountryCode;
+            CurrentCountryCode = fallbackCountryCode;
         }
 
-        if (IsNullOrEmpty(currentCountryName))
+        if (IsNullOrEmpty(CurrentCountryName))
         {
-            currentCountryName = fallbackCountryName;
+            CurrentCountryName = fallbackCountryName;
         }
 
-        if (IsNullOrEmpty(currentCityName))
+        if (IsNullOrEmpty(CurrentCityName))
         {
-            currentCityName = fallbackCityName;
+            CurrentCityName = fallbackCityName;
         }
 
-        Debug.Log("Country code: " + currentCountryCode + " | Country: " + currentCountryName + " | City: " + currentCityName);
+        Debug.Log("Country code: " + CurrentCountryCode + " | Country: " + CurrentCountryName + " | City: " + CurrentCityName);
 
-        yield return StartCoroutine(GetWeather(currentCountryName, currentCityName));
-        yield return StartCoroutine(GetFlag(currentCountryCode));
+        yield return StartCoroutine(GetWeather(CurrentCountryName, CurrentCityName));
+        yield return StartCoroutine(GetFlag(CurrentCountryCode));
     }
 
     private IEnumerator GetWeather(string countryName, string cityName)
@@ -135,22 +135,22 @@ public class WeatherController : MonoBehaviour
                 {
                     if (lines[i].Contains(weatherKey))
                     {
-                        if (string.IsNullOrEmpty(currentWeather))
+                        if (string.IsNullOrEmpty(CurrentWeather))
                         {
-                            currentWeather = GetValueWithKey(lines[i], weatherKey);
+                            CurrentWeather = GetValueWithKey(lines[i], weatherKey);
                         }
                     }
                     else if (lines[i].Contains(weatherDescriptionKey))
                     {
-                        currentWeatherDescription = GetValueWithKey(lines[i], weatherDescriptionKey);
+                        CurrentWeatherDescription = GetValueWithKey(lines[i], weatherDescriptionKey);
                     }
                     else if (lines[i].Contains(windSpeedKey))
                     {
-                        currentWindSpeed = GetValueWithKey(lines[i], windSpeedKey);
+                        CurrentWindSpeed = GetValueWithKey(lines[i], windSpeedKey);
                     }
                     else if (lines[i].Contains(windDegreeKey))
                     {
-                        currentWindDegree = GetValueWithKey(lines[i], windDegreeKey);
+                        CurrentWindDegree = GetValueWithKey(lines[i], windDegreeKey);
                     }
                 }
             }
@@ -160,27 +160,27 @@ public class WeatherController : MonoBehaviour
             Debug.Log(weatherRequest.error);
         }
 
-        if (IsNullOrEmpty(currentWeather))
+        if (IsNullOrEmpty(CurrentWeather))
         {
-            currentWeather = fallbackWeather;
+            CurrentWeather = fallbackWeather;
         }
 
-        if (IsNullOrEmpty(currentWeatherDescription))
+        if (IsNullOrEmpty(CurrentWeatherDescription))
         {
-            currentWeatherDescription = fallbackWeatherDescription;
+            CurrentWeatherDescription = fallbackWeatherDescription;
         }
 
-        if (IsNullOrEmpty(currentWindSpeed))
+        if (IsNullOrEmpty(CurrentWindSpeed))
         {
-            currentWindSpeed = fallbackWindSpeed;
+            CurrentWindSpeed = fallbackWindSpeed;
         }
 
-        if (IsNullOrEmpty(currentWindDegree))
+        if (IsNullOrEmpty(CurrentWindDegree))
         {
-            currentWindDegree = fallbackWindDegree;
+            CurrentWindDegree = fallbackWindDegree;
         }
 
-        Debug.Log("Weather: " + currentWeather + " | Description: " + currentWeatherDescription + " | Wind speed: " + currentWindSpeed + " | Wind degree: " + currentWindDegree);
+        Debug.Log("Weather: " + CurrentWeather + " | Description: " + CurrentWeatherDescription + " | Wind speed: " + CurrentWindSpeed + " | Wind degree: " + CurrentWindDegree);
     }
 
     private IEnumerator GetFlag(string countryCode)
@@ -197,6 +197,7 @@ public class WeatherController : MonoBehaviour
             {
                 var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), Vector2.zero);
                 flagRenderer.sprite = sprite;
+                CurrentFlagSprite = sprite;
             }
         }
         else
