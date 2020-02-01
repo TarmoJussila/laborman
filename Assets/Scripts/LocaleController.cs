@@ -4,6 +4,8 @@ using System;
 
 public class LocaleController : MonoBehaviour
 {
+    public static LocaleController Instance { get; private set; }
+
     public string CurrentWeather { get; private set; }
     public string CurrentWeatherDescription { get; private set; }
     public string CurrentWindSpeed { get; private set; }
@@ -42,6 +44,11 @@ public class LocaleController : MonoBehaviour
     private readonly string fallbackCountryCode = "FI";
     private readonly string fallbackCountryName = "Finland";
     private readonly string fallbackCityName = "Helsinki";
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -195,7 +202,7 @@ public class LocaleController : MonoBehaviour
 
             if (texture != null)
             {
-                var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), Vector2.zero);
+                var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f));
                 flagRenderer.sprite = sprite;
                 CurrentFlagSprite = sprite;
             }
