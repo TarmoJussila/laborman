@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PipePuzzleBlock : MonoBehaviour
 {
-    public GameObject PipeObject;
+    public GameObject PipeObject = null;
+
+    public PipePuzzle RelatedPuzzle;
 
     public BlockType Type;
     public Flow FlowDir;
     public PipeType Pipe;
-    public Side[] Sides;
+    public List<Side> Sides;
 
     private Outline outline;
     [SerializeField]
@@ -32,14 +34,14 @@ public class PipePuzzleBlock : MonoBehaviour
                 {
                     FlowDir = Flow.DownUp;
                     Pipe = PipeType.Straight;
-                    Sides = new Side[] { Side.Up, Side.Down };
+                    Sides = new List<Side>(new Side[] { Side.Up, Side.Down });
                     break;
                 }
             case BlockType.End:
                 {
                     FlowDir = Flow.LeftRight;
                     Pipe = PipeType.Straight;
-                    Sides = new Side[] { Side.Left, Side.Right };
+                    Sides = new List<Side>(new Side[] { Side.Left, Side.Right });
                     break;
                 }
             case BlockType.Obstacle:
@@ -78,25 +80,25 @@ public class PipePuzzleBlock : MonoBehaviour
                 case Flow.LeftDown:
                     {
                         FlowDir = Flow.LeftUp;
-                        Sides = new Side[] { Side.Left, Side.Up };
+                        Sides = new List<Side>( new Side[] { Side.Left, Side.Up });
                         break;
                     }
                 case Flow.LeftUp:
                     {
                         FlowDir = Flow.UpRight;
-                        Sides = new Side[] { Side.Up, Side.Right };
+                        Sides = new List<Side>( new Side[] { Side.Up, Side.Right });
                         break;
                     }
                 case Flow.UpRight:
                     {
                         FlowDir = Flow.RightDown;
-                        Sides = new Side[] { Side.Down, Side.Right };
+                        Sides = new List<Side>( new Side[] { Side.Down, Side.Right });
                         break;
                     }
                 case Flow.RightDown:
                     {
                         FlowDir = Flow.LeftDown;
-                        Sides = new Side[] { Side.Left, Side.Down };
+                        Sides = new List<Side>( new Side[] { Side.Left, Side.Down });
                         break;
                     }
             }
@@ -107,18 +109,20 @@ public class PipePuzzleBlock : MonoBehaviour
             PipeObject.transform.Rotate(Vector3.forward, -90.0f);
             if (FlowDir == Flow.LeftRight)
             {
-                Sides = new Side[] { Side.Left, Side.Right };
+                Sides = new List<Side>( new Side[] { Side.Left, Side.Right });
             }
             else
             {
-                Sides = new Side[] { Side.Down, Side.Up };
+                Sides = new List<Side>( new Side[] { Side.Down, Side.Up });
             }
         }
+
+        RelatedPuzzle.CheckCompletion();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (Type != BlockType.Empty && Type != BlockType.AlwaysEmpty) return;
+        if ((Type != BlockType.Empty && Type != BlockType.AlwaysEmpty) || PipeObject != null) return;
 
         bool straight = other.CompareTag("StraightPipe");
         bool corner = other.CompareTag("CornerPipe");
@@ -137,22 +141,50 @@ public class PipePuzzleBlock : MonoBehaviour
                 {
                     Pipe = PipeType.Straight;
                     FlowDir = Flow.LeftRight;
-                    Sides = new Side[] { Side.Left, Side.Right };
+                    Sides = new List<Side>( new Side[] { Side.Left, Side.Right });
                 }
                 else if (corner)
                 {
                     Pipe = PipeType.Corner;
                     FlowDir = Flow.UpRight;
-                    Sides = new Side[] { Side.Up, Side.Right };
+                    Sides = new List<Side>( new Side[] { Side.Up, Side.Right });
                 }
+                RelatedPuzzle.CheckCompletion();
 
             }
         }
     }
 
-    public static void GetOpposite()
+    public void DetachPipe()
     {
+        PipeObject = null;
+    }
 
+    public static Side GetOpposite(Side side)
+    {
+        switch (side)
+        {
+            case Side.Down:
+                {
+                    return Side.Up;
+                }
+            case Side.Up:
+                {
+                    return Side.Down;
+                }
+            case Side.Left:
+                {
+                    return Side.Right;
+                }
+            case Side.Right:
+                {
+                    return Side.Left;
+                }
+            default:
+                {
+                    return Side.Down;
+                }
+        }
     }
 }
 

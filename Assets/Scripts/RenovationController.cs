@@ -17,7 +17,7 @@ public class RenovationController : MonoBehaviour
 
     private void Awake()
     {
-        RenovationController.Instance = this;
+        Instance = this;
     }
 
     // Start is called before the first frame update

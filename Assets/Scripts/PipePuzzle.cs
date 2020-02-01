@@ -27,7 +27,9 @@ public class PipePuzzle : Puzzle
     {
         for (int i = 0; i < PuzzleBlocks.Length; i++)
         {
-            Blocks[i % 4, (int)Mathf.Floor(i / 4)] = PuzzleBlocks[i].GetComponent<PipePuzzleBlock>();
+            PipePuzzleBlock block = PuzzleBlocks[i].GetComponent<PipePuzzleBlock>();
+            block.RelatedPuzzle = this;
+            Blocks[i % 4, (int)Mathf.Floor(i / 4)] = block;
         }
 
         Blocks[0, 0].SetType(BlockType.Start);
@@ -52,7 +54,67 @@ public class PipePuzzle : Puzzle
 
     public void CheckCompletion()
     {
+        Side previousExit = Side.Down;
+        bool keepChecking = true;
+        bool win = false;
+        int[] lastCell = new int[] { 0, 0 };
+        while (keepChecking)
+        {
+            int[] nextCell = GetNextCell(lastCell, previousExit);
+           
+            if (nextCell[0] == 3 && nextCell[1] == 3)
+            {
+                win = true;
+                keepChecking = false;
+                break;
+            }
+            PipePuzzleBlock block = Blocks[nextCell[0], nextCell[1]];
+            Side required = PipePuzzleBlock.GetOpposite(previousExit);
+            bool match = block.Sides.IndexOf(required) > -1;
+            if (match)
+            {
+                previousExit = block.Sides.Find(item => item != required);
+                lastCell = nextCell;
+                keepChecking = true;
+            }
+            else
+            {
+                keepChecking = false;
+            }
+        }
+        if (win)
+        {
+            redLight.GetComponent<MeshRenderer>().material = greenMat;
+            Solved();
+        }
+    }
 
+    public int[] GetNextCell(int[] current, Side exit)
+    {
+        switch (exit)
+        {
+            case Side.Up:
+                {
+                    current[1]--;
+                    break;
+                }
+            case Side.Right:
+                {
+                    current[0]++;
+                    break;
+                }
+            case Side.Down:
+                {
+                    current[1]++;
+                    break;
+                }
+            case Side.Left:
+                {
+                    current[0]--;
+                    break;
+                }
+        }
+        return current;
     }
 
 }

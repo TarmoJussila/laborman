@@ -18,7 +18,7 @@ public class HouseWall : MonoBehaviour
     void Awake()
     {
         SetWindow(CanBeWindow);
-        //RenovationController.Instance.RegisterWall(this);
+        RenovationController.Instance.RegisterWall(this);
     }
 
     public void SetWindow(bool isWindow)

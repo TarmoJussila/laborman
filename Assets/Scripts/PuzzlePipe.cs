@@ -25,6 +25,10 @@ public class PuzzlePipe : MonoBehaviour
 
     public void DetachPipe()
     {
+        if (AttachedBlock)
+            AttachedBlock.DetachPipe();
+
+        AttachedBlock = null;
         Placed = false;
         rb.isKinematic = false;
     }
