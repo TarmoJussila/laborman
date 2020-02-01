@@ -77,11 +77,17 @@ public class LocaleController : MonoBehaviour
                 {
                     if (lines[i].Contains(countryCodeKey))
                     {
-                        CurrentCountryCode = GetValueWithKey(lines[i], countryCodeKey);
+                        if (IsNullOrEmpty(CurrentCountryCode))
+                        {
+                            CurrentCountryCode = GetValueWithKey(lines[i], countryCodeKey);
+                        }
                     }
                     else if (lines[i].Contains(countryNameKey))
                     {
-                        CurrentCountryName = GetValueWithKey(lines[i], countryNameKey);
+                        if (IsNullOrEmpty(CurrentCountryName))
+                        {
+                            CurrentCountryName = GetValueWithKey(lines[i], countryNameKey);
+                        }
                     }
                     else if (lines[i].Contains(cityNameKey))
                     {
