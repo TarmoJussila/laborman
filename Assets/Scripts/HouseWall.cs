@@ -15,9 +15,10 @@ public class HouseWall : MonoBehaviour
     public bool CanBeWindow = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetWindow(CanBeWindow);
+        //RenovationController.Instance.RegisterWall(this);
     }
 
     public void SetWindow(bool isWindow)
@@ -25,5 +26,10 @@ public class HouseWall : MonoBehaviour
         WindowObject.SetActive(isWindow && CanBeWindow);
         InnerPanels[1].gameObject.SetActive(!isWindow);
         OuterPanels[1].gameObject.SetActive(!isWindow);
+    }
+
+    public Puzzle SpawnPuzzle()
+    {
+        return new Puzzle();
     }
 }
