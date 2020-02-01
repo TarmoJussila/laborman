@@ -83,12 +83,12 @@ public class WeatherController : MonoBehaviour
             Debug.Log(locationRequest.error);
         }
 
-        if (string.IsNullOrEmpty(currentCountryName))
+        if (IsNullOrEmpty(currentCountryName))
         {
             currentCountryName = fallbackCountryName;
         }
 
-        if (string.IsNullOrEmpty(currentCityName))
+        if (IsNullOrEmpty(currentCityName))
         {
             currentCityName = fallbackCityName;
         }
@@ -141,22 +141,22 @@ public class WeatherController : MonoBehaviour
             Debug.Log(weatherRequest.error);
         }
 
-        if (string.IsNullOrEmpty(currentWeather))
+        if (IsNullOrEmpty(currentWeather))
         {
             currentWeather = fallbackWeather;
         }
 
-        if (string.IsNullOrEmpty(currentWeatherDescription))
+        if (IsNullOrEmpty(currentWeatherDescription))
         {
             currentWeatherDescription = fallbackWeatherDescription;
         }
 
-        if (string.IsNullOrEmpty(currentWindSpeed))
+        if (IsNullOrEmpty(currentWindSpeed))
         {
             currentWindSpeed = fallbackWindSpeed;
         }
 
-        if (string.IsNullOrEmpty(currentWindDegree))
+        if (IsNullOrEmpty(currentWindDegree))
         {
             currentWindDegree = fallbackWindDegree;
         }
@@ -179,5 +179,10 @@ public class WeatherController : MonoBehaviour
             }
         }
         return value;
+    }
+
+    private bool IsNullOrEmpty(string str)
+    {
+        return string.IsNullOrWhiteSpace(str) || str.StartsWith("null");
     }
 }
