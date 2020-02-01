@@ -59,7 +59,7 @@ public class LocaleController : MonoBehaviour
 
     private IEnumerator GetLocation()
     {
-        string ip = useOverrideIP ? overrideIP : IPManager.GetIP(IpVersion.IPv6);
+        string ip = useOverrideIP ? overrideIP : IPUtility.GetIP(IpVersion.IPv6);
 
         WWW locationRequest = new WWW(geoPluginUrl + ip);
 
@@ -68,7 +68,6 @@ public class LocaleController : MonoBehaviour
         if (locationRequest.error == null)
         {
             string locationJson = locationRequest.text;
-            Debug.LogError(locationJson);
 
             if (!string.IsNullOrEmpty(locationJson))
             {
@@ -86,14 +85,14 @@ public class LocaleController : MonoBehaviour
                     }
                     else if (lines[i].Contains(cityNameKey))
                     {
-                        if (string.IsNullOrEmpty(CurrentCityName))
+                        if (IsNullOrEmpty(CurrentCityName))
                         {
                             CurrentCityName = GetValueWithKey(lines[i], cityNameKey);
                         }
                     }
                     else if (lines[i].Contains(timeZoneKey))
                     {
-                        if (string.IsNullOrEmpty(CurrentCityName))
+                        if (IsNullOrEmpty(CurrentCityName))
                         {
                             CurrentCityName = GetValueWithKey(lines[i], timeZoneKey);
                         }
@@ -108,7 +107,16 @@ public class LocaleController : MonoBehaviour
 
         if (IsNullOrEmpty(CurrentCountryCode))
         {
-            CurrentCountryCode = fallbackCountryCode;
+            var systemCountryCode = Application.systemLanguage.ToCountryCode();
+
+            if (!IsNullOrEmpty(systemCountryCode))
+            {
+                CurrentCountryCode = systemCountryCode;
+            }
+            else
+            {
+                CurrentCountryCode = fallbackCountryCode;
+            }
         }
 
         if (IsNullOrEmpty(CurrentCountryName))
@@ -145,7 +153,7 @@ public class LocaleController : MonoBehaviour
                 {
                     if (lines[i].Contains(weatherKey))
                     {
-                        if (string.IsNullOrEmpty(CurrentWeather))
+                        if (IsNullOrEmpty(CurrentWeather))
                         {
                             CurrentWeather = GetValueWithKey(lines[i], weatherKey);
                         }
