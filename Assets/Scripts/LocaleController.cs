@@ -59,7 +59,7 @@ public class LocaleController : MonoBehaviour
 
     private IEnumerator GetLocation()
     {
-        string ip = useOverrideIP ? overrideIP : IPManager.GetIP(IpVersion.IPv4);
+        string ip = useOverrideIP ? overrideIP : IPManager.GetIP(IpVersion.IPv6);
 
         WWW locationRequest = new WWW(geoPluginUrl + ip);
 
@@ -68,6 +68,7 @@ public class LocaleController : MonoBehaviour
         if (locationRequest.error == null)
         {
             string locationJson = locationRequest.text;
+            Debug.LogError(locationJson);
 
             if (!string.IsNullOrEmpty(locationJson))
             {
