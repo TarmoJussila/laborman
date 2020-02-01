@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Grabber : MonoBehaviour
 {
+    public static Grabber Instance { get; private set; }
+
     public LayerMask GrabbableLayer;
     public float DragForce = 100.0f;
 
@@ -15,6 +17,11 @@ public class Grabber : MonoBehaviour
 
     [SerializeField]
     private AnimationCurve dragCurve;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Update is called once per frame
     void Update()
@@ -40,9 +47,7 @@ public class Grabber : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                holding = false;
-                holdingRb.useGravity = true;
-                holdingRb = null;
+                Release();
             }
         }
         else if (Input.GetKeyDown(KeyCode.E))
@@ -54,7 +59,37 @@ public class Grabber : MonoBehaviour
                 holdingRb.transform.SetParent(null);
                 holdingRb.useGravity = false;
                 holding = true;
+                if (holdingRb.tag.IndexOf("Pipe") > -1)
+                {
+                    PuzzlePipe pipe = holdingRb.GetComponent<PuzzlePipe>();
+                    pipe.DetachPipe();
+                    pipe.Grabbed = true;
+                }
             }
         }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            RaycastHit rayhit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, maxDistance))
+            {
+                if (rayhit.collider.tag.IndexOf("Pipe") > -1)
+                {
+                    rayhit.collider.GetComponent<PuzzlePipe>().AttachedBlock.Rotate();
+                }
+            }
+        }
+    }
+
+    public void Release()
+    {
+        if (!holdingRb) return;
+        holding = false;
+        holdingRb.useGravity = true;
+        if (holdingRb.tag.IndexOf("Pipe") > -1)
+        {
+            PuzzlePipe pipe = holdingRb.GetComponent<PuzzlePipe>();
+            pipe.Grabbed = false;
+        }
+        holdingRb = null;
     }
 }
