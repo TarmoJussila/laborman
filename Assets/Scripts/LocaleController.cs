@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class WeatherController : MonoBehaviour
+public class LocaleController : MonoBehaviour
 {
     public string CurrentWeather { get; private set; }
     public string CurrentWeatherDescription { get; private set; }
