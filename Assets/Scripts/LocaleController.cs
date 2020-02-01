@@ -233,6 +233,6 @@ public class LocaleController : MonoBehaviour
 
     private bool IsNullOrEmpty(string str)
     {
-        return string.IsNullOrWhiteSpace(str) || str.StartsWith("null");
+        return string.IsNullOrWhiteSpace(str) || str.StartsWith("null") || str.StartsWith("0");
     }
 }
