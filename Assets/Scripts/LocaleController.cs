@@ -14,6 +14,7 @@ public class LocaleController : MonoBehaviour
     public string CurrentCountryName { get; private set; }
     public string CurrentCityName { get; private set; }
     public Sprite CurrentFlagSprite { get; private set; }
+    public Texture2D CurrentFlagTexture { get; private set; }
 
     [Header("Debug Settings")]
     [SerializeField] private string overrideIP = "173.162.43.195";
@@ -221,6 +222,7 @@ public class LocaleController : MonoBehaviour
             {
                 var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f));
                 CurrentFlagSprite = sprite;
+                CurrentFlagTexture = texture;
             }
         }
         else
