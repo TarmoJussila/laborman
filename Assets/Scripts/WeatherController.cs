@@ -4,6 +4,8 @@ using System;
 
 public class WeatherController : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer flagRenderer;
+
     // OpenWeatherMap.
     private readonly string openWeatherMapUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
     private readonly string openWeatherMapAppId = "e3a642cec13d52496490dfa8e9ba11d3";
@@ -13,16 +15,22 @@ public class WeatherController : MonoBehaviour
     private readonly string windDegreeKey = "deg";
 
     // geoPlugin.
-    private readonly string geopluginUrl = "http://www.geoplugin.net/json.gp?ip=";
+    private readonly string geoPluginUrl = "http://www.geoplugin.net/json.gp?ip=";
+    private readonly string countryCodeKey = "geoplugin_countryCode";
     private readonly string countryNameKey = "geoplugin_countryName";
     private readonly string cityNameKey = "geoplugin_city";
     private readonly string timeZoneKey = "geoplugin_timezone";
+
+    // CountryFlags.
+    private readonly string countryFlagsUrl = "https://www.countryflags.io/";
+    private readonly string countryFlagsSuffix = "/shiny/64.png";
 
     // Fallback values.
     private readonly string fallbackWeather = "Clouds";
     private readonly string fallbackWeatherDescription = "Broken clouds";
     private readonly string fallbackWindSpeed = "3.2";
     private readonly string fallbackWindDegree = "128";
+    private readonly string fallbackCountryCode = "FI";
     private readonly string fallbackCountryName = "Finland";
     private readonly string fallbackCityName = "Helsinki";
 
@@ -31,6 +39,7 @@ public class WeatherController : MonoBehaviour
     private string currentWeatherDescription;
     private string currentWindSpeed;
     private string currentWindDegree;
+    private string currentCountryCode;
     private string currentCountryName;
     private string currentCityName;
 
@@ -43,7 +52,7 @@ public class WeatherController : MonoBehaviour
     {
         string ip = IPManager.GetIP(IpVersion.IPv6);
 
-        WWW locationRequest = new WWW(geopluginUrl + ip);
+        WWW locationRequest = new WWW(geoPluginUrl + ip);
 
         yield return locationRequest;
 
@@ -57,7 +66,11 @@ public class WeatherController : MonoBehaviour
 
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    if (lines[i].Contains(countryNameKey))
+                    if (lines[i].Contains(countryCodeKey))
+                    {
+                        currentCountryCode = GetValueWithKey(lines[i], countryCodeKey);
+                    }
+                    else if (lines[i].Contains(countryNameKey))
                     {
                         currentCountryName = GetValueWithKey(lines[i], countryNameKey);
                     }
@@ -83,6 +96,11 @@ public class WeatherController : MonoBehaviour
             Debug.Log(locationRequest.error);
         }
 
+        if (IsNullOrEmpty(currentCountryCode))
+        {
+            currentCountryCode = fallbackCountryCode;
+        }
+
         if (IsNullOrEmpty(currentCountryName))
         {
             currentCountryName = fallbackCountryName;
@@ -93,9 +111,10 @@ public class WeatherController : MonoBehaviour
             currentCityName = fallbackCityName;
         }
 
-        Debug.Log("Country: " + currentCountryName + " | City: " + currentCityName);
+        Debug.Log("Country code: " + currentCountryCode + " | Country: " + currentCountryName + " | City: " + currentCityName);
 
         yield return StartCoroutine(GetWeather(currentCountryName, currentCityName));
+        yield return StartCoroutine(GetFlag(currentCountryCode));
     }
 
     private IEnumerator GetWeather(string countryName, string cityName)
@@ -162,6 +181,28 @@ public class WeatherController : MonoBehaviour
         }
 
         Debug.Log("Weather: " + currentWeather + " | Description: " + currentWeatherDescription + " | Wind speed: " + currentWindSpeed + " | Wind degree: " + currentWindDegree);
+    }
+
+    private IEnumerator GetFlag(string countryCode)
+    {
+        WWW flagRequest = new WWW(countryFlagsUrl + countryCode.ToLower() + countryFlagsSuffix);
+
+        yield return flagRequest;
+
+        if (flagRequest.error == null)
+        {
+            var texture = flagRequest.texture;
+
+            if (texture != null)
+            {
+                var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), Vector2.zero);
+                flagRenderer.sprite = sprite;
+            }
+        }
+        else
+        {
+            Debug.Log(flagRequest.error);
+        }
     }
 
     private string GetValueWithKey(string line, string key)
