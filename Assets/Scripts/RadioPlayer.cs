@@ -9,7 +9,7 @@ public class RadioPlayer : MonoBehaviour
     private void Start()
     {
         audioSource.loop = false;
-        audioSource.clip = GetRandomAudioClip();
+        audioSource.clip = GetRandomMusicClip();
         audioSource.Play();
     }
 
@@ -17,13 +17,13 @@ public class RadioPlayer : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            audioSource.clip = GetRandomAudioClip();
+            audioSource.clip = GetRandomMusicClip();
             audioSource.Play();
         }
     }
 
-    private AudioClip GetRandomAudioClip()
+    private AudioClip GetRandomMusicClip()
     {
-        return AudioController.Instance.AudioClips[Random.Range(0, AudioController.Instance.AudioClips.Count)];
+        return AudioController.Instance.MusicClips[Random.Range(0, AudioController.Instance.MusicClips.Count)];
     }
 }
