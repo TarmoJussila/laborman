@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlagFetcher : MonoBehaviour
+public class FlagSpriteFetcher : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer flagRenderer;
 
