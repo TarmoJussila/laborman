@@ -6,6 +6,8 @@ public class HouseWall : MonoBehaviour
 {
     [SerializeField]
     private List<WallPanel> Panels = new List<WallPanel>();
+    [SerializeField]
+    private GameObject WindowObject;
 
     public bool CanHavePuzzles = true;
     public bool CanBeWindow = false;
@@ -20,5 +22,10 @@ public class HouseWall : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetWindow(bool isWindow)
+    {
+        WindowObject.SetActive(isWindow && CanBeWindow);
     }
 }
