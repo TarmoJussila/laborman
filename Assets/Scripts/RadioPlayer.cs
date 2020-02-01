@@ -8,6 +8,7 @@ public class RadioPlayer : MonoBehaviour
 
     private void Start()
     {
+        audioSource.loop = false;
         audioSource.clip = GetRandomAudioClip();
         audioSource.Play();
     }
