@@ -243,18 +243,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14305d1166cee4743ae4f114446a5a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LockWall: 0
+  LockWall: 1
   fuses:
   - On: 0
     MeshRenderer: {fileID: 3307623324028279496}
+    FuseIndex: -1
+    PairedFuseIndex: -2
   - On: 0
     MeshRenderer: {fileID: 8789142280043219667}
+    FuseIndex: -1
+    PairedFuseIndex: -2
   - On: 0
     MeshRenderer: {fileID: 1432151122607543563}
+    FuseIndex: -1
+    PairedFuseIndex: -2
   - On: 0
     MeshRenderer: {fileID: 9064093492996761478}
+    FuseIndex: -1
+    PairedFuseIndex: -2
   - On: 0
     MeshRenderer: {fileID: 8239444530991630065}
+    FuseIndex: -1
+    PairedFuseIndex: -2
   onMaterial: {fileID: 2100000, guid: 3f559d8971e9bac4ab7c749b78ecdce2, type: 2}
   offMaterial: {fileID: 2100000, guid: fd8dba7441808024b803def73c6e95bc, type: 2}
   onPositionY: 0.02
@@ -642,6 +652,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cef5c68ca909f5419a0f886ae979556, type: 3}
+--- !u!4 &278764526265779729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7893378065686544597, guid: 0cef5c68ca909f5419a0f886ae979556,
+    type: 3}
+  m_PrefabInstance: {fileID: 7950180846757349060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3372606403523567163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4654840733363919103, guid: 0cef5c68ca909f5419a0f886ae979556,
@@ -651,12 +667,6 @@ Transform:
 --- !u!1 &3372606403523723803 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4654840733363815647, guid: 0cef5c68ca909f5419a0f886ae979556,
-    type: 3}
-  m_PrefabInstance: {fileID: 7950180846757349060}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &278764526265779729 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7893378065686544597, guid: 0cef5c68ca909f5419a0f886ae979556,
     type: 3}
   m_PrefabInstance: {fileID: 7950180846757349060}
   m_PrefabAsset: {fileID: 0}

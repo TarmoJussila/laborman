@@ -106,10 +106,10 @@ RectTransform:
   m_Father: {fileID: 684002450741981922}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.9}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 500, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1037686295
 CanvasRenderer:
@@ -141,7 +141,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 64
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 6
     m_MaxSize: 64
     m_Alignment: 4
@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7936391081177600372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &684002450741981922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1531,6 +1531,7 @@ MonoBehaviour:
   PuzzlePrefabs:
   - {fileID: 459885344473700205, guid: 2dcc7b7a0e58e0d48825fa7c15ee303f, type: 3}
   - {fileID: 459885344473700205, guid: c0bb2e4a10698ec49907173e2b94df73, type: 3}
+  - {fileID: 5871967667855599445, guid: a4d25648f5d064c368c58e67d6a32ed3, type: 3}
   RoomPrefabs:
   - {fileID: 5292230133993081096, guid: b4134f6907e05f84aacb71c8118cc914, type: 3}
   - {fileID: 6060721638170060433, guid: a5dcf64f2825c844081db79b8cf07dd8, type: 3}
