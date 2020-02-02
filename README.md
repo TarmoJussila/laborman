@@ -38,4 +38,6 @@ Aleksi Toivonen - Programming
 
 Lari Kemiläinen - Sculpting & Voice Actor
 
+Lenni Kemiläinen - Brand Design
+
 Juhani Haverinen - Music & Audio
