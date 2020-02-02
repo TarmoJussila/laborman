@@ -12,8 +12,11 @@ public class RenovationController : MonoBehaviour
     private int RoomPuzzles;
 
     List<HouseWall> Walls = new List<HouseWall>();
+    List<PuzzleRoom> Rooms = new List<PuzzleRoom>();
 
     public GameObject[] PuzzlePrefabs;
+    public GameObject[] RoomPrefabs;
+    public GameObject[] RoomPuzzlePrefabs;
 
     [SerializeField]
     private List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
@@ -27,11 +30,17 @@ public class RenovationController : MonoBehaviour
     void Start()
     {
         RandomizeWalls();
+        RandomizeRooms();
     }
 
     public void RegisterWall(HouseWall wall)
     {
         Walls.Add(wall);
+    }
+
+    public void RegisterRoom(PuzzleRoom room)
+    {
+        Rooms.Add(room);
     }
 
     private void RandomizeWalls()
@@ -47,11 +56,29 @@ public class RenovationController : MonoBehaviour
         }
     }
 
+    private void RandomizeRooms()
+    {
+        List<PuzzleRoom> UnusedRooms = new List<PuzzleRoom>(Rooms);
+        for (int i = 0; i < RoomPuzzles; i++)
+        {
+            int index = Random.Range(0, UnusedRooms.Count);
+            PuzzleRoom room = UnusedRooms[index];
+            UnusedRooms.Remove(room);
+            Puzzle puzzle = room.SpawnPuzzle();
+            if (puzzle)
+                UnsolvedPuzzles.Add(puzzle);
+        }
+        while (UnusedRooms.Count > 0)
+        {
+            PuzzleRoom room = UnusedRooms[0];
+            UnusedRooms.Remove(room);
+            room.SpawnRoom();
+        }
+    }
+
     public void SolvePuzzle(Puzzle puzzle)
     {
         UnsolvedPuzzles.Remove(puzzle);
     }
-
-
 
 }
