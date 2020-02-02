@@ -25,6 +25,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] private List<AudioClip> valveSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> electricSounds = new List<AudioClip>();
     [SerializeField] private AudioClip failureSound;
+    [SerializeField] private AudioClip successSound;
 
     private void Update()
     {
@@ -92,5 +93,10 @@ public class AudioController : MonoBehaviour
     public void PlayFailureSoundClip()
     {
         playerAudioSource.PlayOneShot(failureSound);
+    }
+
+    public void PlaySuccessSoundClip()
+    {
+        playerAudioSource.PlayOneShot(successSound);
     }
 }
