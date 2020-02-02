@@ -68,13 +68,15 @@ public class RenovationController : MonoBehaviour
             TimeField.text = (minutes > 9 ? "" + minutes : "0" + minutes) + ":" + (seconds > 9 ? "" + seconds : "0" + seconds);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P) && CurrentGameState == GameState.Game)
         {
             EndGame(false);
         }
+#endif
 
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && CurrentGameState == GameState.Game)
 #else
         if (Input.GetKeyDown(KeyCode.Escape))
 #endif
