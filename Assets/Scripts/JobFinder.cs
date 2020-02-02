@@ -13,6 +13,8 @@ public class JobFinder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (RenovationController.Instance.CurrentGameState != GameState.Game) return;
+
         updateTimer += Time.deltaTime;
         if (updateTimer < 0.5f)
             return;
