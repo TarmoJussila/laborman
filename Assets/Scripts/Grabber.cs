@@ -27,8 +27,7 @@ public class Grabber : MonoBehaviour
         Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (holding)
         {
@@ -43,18 +42,15 @@ public class Grabber : MonoBehaviour
             holdDistance -= mouseScroll * Time.deltaTime * 2f;
             holdDistance = Mathf.Clamp(holdDistance, holdDistanceMin, holdDistanceMax);
 
-            //holdingRb.transform.position = Vector3.Lerp(holdingRb.transform.position, targetPos, 0.5f);
-            /*if (distance > 2)
-            {
-                holdingRb.transform.position = Vector3.Lerp(holdingRb.transform.position, targetPos, 0.9f);
-            }
-            else
-            {
-                holdingRb.velocity = (targetPos - holdingRb.transform.position) * DragForce;
-                //holdingRb.AddForce(targetPos - holdingRb.transform.position * Time.deltaTime * DragForce);
-            }*/
-
             if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (holdingRb.CompareTag("Beer"))
+                {
+                    AudioController.Instance.PlayBeerSoundClip();
+                    ThrowUpRelease();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
             {
                 if (holdingRb.CompareTag("Radio"))
                 {
@@ -136,6 +132,16 @@ public class Grabber : MonoBehaviour
             pipe.Grabbed = false;
         }
         holdingRb.AddForce(Camera.main.transform.forward * 10f, ForceMode.Impulse);
+        holdingRb = null;
+        AudioController.Instance.PlayThrowSoundClip();
+    }
+
+    public void ThrowUpRelease()
+    {
+        if (!holdingRb) return;
+        holding = false;
+        holdingRb.useGravity = true;
+        holdingRb.AddForce(Camera.main.transform.up * 10f, ForceMode.Impulse);
         holdingRb = null;
         AudioController.Instance.PlayThrowSoundClip();
     }

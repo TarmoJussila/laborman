@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3972136997273770789}
   m_Layer: 8
   m_Name: Beer
-  m_TagString: Untagged
+  m_TagString: Beer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
