@@ -48,6 +48,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b8b94ff2901b7541b67f1ab3147643b, type: 3}
   - {fileID: 8300000, guid: 9e60b66630e0527488745181e0ba78cd, type: 3}
   - {fileID: 8300000, guid: 0ce1dff12c96b5f45b27fccd3624c135, type: 3}
+  radioStaticClips:
+  - {fileID: 8300000, guid: ef527ba2c9e7b47058f472449d5f5df5, type: 3}
+  - {fileID: 8300000, guid: f484696c6097e4f6e8588746f58599a8, type: 3}
+  - {fileID: 8300000, guid: 194092bb3fb8f445595ddd66ef39b545, type: 3}
+  - {fileID: 8300000, guid: 07abc4cfd86b5465fb8ac97f729902d1, type: 3}
   angrySounds:
   - {fileID: 8300000, guid: bc39ec424ab804e9ebb43d5603c6979a, type: 3}
   - {fileID: 8300000, guid: 5bf818b274141463eaece26fbdb591fb, type: 3}

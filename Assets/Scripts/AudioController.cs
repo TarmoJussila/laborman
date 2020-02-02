@@ -8,10 +8,11 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get; private set; }
 
     public List<AudioClip> MusicClips { get { return musicClips; } }
+    public List<AudioClip> RadioStaticClips { get { return radioStaticClips; } }
 
     [SerializeField] private AudioSource playerAudioSource;
-    [FormerlySerializedAs("audioClips")]
     [SerializeField] private List<AudioClip> musicClips = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> radioStaticClips = new List<AudioClip>();
     [SerializeField] private List<AudioClip> angrySounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> pleasedSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> thinkingSounds = new List<AudioClip>();
