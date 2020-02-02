@@ -85,6 +85,8 @@ public class ElectricPuzzle : Puzzle
             }
         }
 
+        AudioController.Instance.PlayElectricSoundClip();
+
         bool areAllOn = true;
         for (int i = 0; i < 5; i++)
         {

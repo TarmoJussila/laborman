@@ -91,3 +91,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a2d1294899300dd4da3c2452f5d6545d, type: 3}
   - {fileID: 8300000, guid: cfd99b03584df414590774b6ec7c8cc9, type: 3}
   - {fileID: 8300000, guid: 46a89d3ee20693544989c3f7e3c15e57, type: 3}
+  electricSounds:
+  - {fileID: 8300000, guid: 5dbbf6bfa66004e2185887cad223d311, type: 3}
+  - {fileID: 8300000, guid: ffb919c00b09f4ce6802a13f4b499433, type: 3}
+  - {fileID: 8300000, guid: 3998824d295754c51aee063251ed879f, type: 3}
