@@ -10,6 +10,7 @@ TagManager:
   - CornerPipe
   - Electric
   - Valve
+  - Radio
   layers:
   - Default
   - TransparentFX
