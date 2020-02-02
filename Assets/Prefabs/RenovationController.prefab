@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4e0963a404f2748a0440a97136390f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallPuzzles: 6
+  WallPuzzles: 5
   RoomPuzzles: 0
   PuzzlePrefabs:
   - {fileID: 459885344473700205, guid: 2dcc7b7a0e58e0d48825fa7c15ee303f, type: 3}
@@ -1629,9 +1629,11 @@ MonoBehaviour:
   RoomPrefabs:
   - {fileID: 5292230133993081096, guid: b4134f6907e05f84aacb71c8118cc914, type: 3}
   - {fileID: 6060721638170060433, guid: a5dcf64f2825c844081db79b8cf07dd8, type: 3}
+  - {fileID: 7083871726944832613, guid: 68a807e5024628c4ca2862557b463a5f, type: 3}
+  - {fileID: 8818238982155900557, guid: f3ec8c679facd0a4cb3207feca81bb15, type: 3}
   RoomPuzzlePrefabs: []
   UnsolvedPuzzles: []
-  TimeLeft: 600
+  TimeLeft: 300
   TimeField: {fileID: 1037686294}
   SalaryField: {fileID: 7232780605852260133}
   PenaltyField: {fileID: 610732742574334327}
