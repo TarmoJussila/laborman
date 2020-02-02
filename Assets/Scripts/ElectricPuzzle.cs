@@ -28,7 +28,10 @@ public class Fuse
 
         if (doTogglePairedFuse && FuseIndex != PairedFuseIndex && PairedFuseIndex >= 0 && pairedFuse != null)
         {
-            pairedFuse.Toggle(onMaterial, offMaterial, onPositionY, offPositionY, false);
+            if (Random.Range(0, 2) == 0)
+            {
+                pairedFuse.Toggle(onMaterial, offMaterial, onPositionY, offPositionY, false);
+            }
         }
     }
 }
@@ -54,10 +57,6 @@ public class ElectricPuzzle : Puzzle
         {
             var randomFuseIndex = Random.Range(0, 5);
             fuses[i].Initialize(fuses[randomFuseIndex], i, randomFuseIndex);
-
-            // NOTE: Make sure at least one fuse is not paired.
-            int nonPairedFuseIndex = Random.Range(0, 5);
-            fuses[nonPairedFuseIndex].Initialize(null, nonPairedFuseIndex, nonPairedFuseIndex);
         }
 
         // Scramble fuse box at start.
