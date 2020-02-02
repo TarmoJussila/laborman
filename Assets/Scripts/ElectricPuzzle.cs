@@ -41,6 +41,8 @@ public class ElectricPuzzle : Puzzle
     [SerializeField] private float onPositionY;
     [SerializeField] private float offPositionY;
 
+    private bool isSolved = false;
+
     private void Start()
     {
         Initialize();
@@ -70,6 +72,11 @@ public class ElectricPuzzle : Puzzle
 
     public void ToggleFuse(string fuseName)
     {
+        if (isSolved)
+        {
+            return;
+        }
+
         for (int i = 0; i < 5; i++)
         {
             if (fuseName.EndsWith((i + 1).ToString()))
@@ -91,6 +98,7 @@ public class ElectricPuzzle : Puzzle
 
         if (areAllOn)
         {
+            isSolved = true;
             Solved();
         }
     }
