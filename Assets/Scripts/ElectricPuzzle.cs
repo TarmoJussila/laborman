@@ -78,5 +78,20 @@ public class ElectricPuzzle : Puzzle
                 break;
             }
         }
+
+        bool areAllOn = true;
+        for (int i = 0; i < 5; i++)
+        {
+            if (!fuses[i].On)
+            {
+                areAllOn = false;
+                break;
+            }
+        }
+
+        if (areAllOn)
+        {
+            Solved();
+        }
     }
 }
