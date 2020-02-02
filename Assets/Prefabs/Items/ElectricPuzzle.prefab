@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1432151122607543563}
   - component: {fileID: 8744711213012952235}
   m_Layer: 10
-  m_Name: Fuse1
+  m_Name: Fuse3
   m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 3372606403523567163}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &876885483614350753
 MeshFilter:
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 8239444530991630065}
   - component: {fileID: 3249195776006958269}
   m_Layer: 10
-  m_Name: Fuse4
+  m_Name: Fuse5
   m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 3372606403523567163}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2752095470221178823
 MeshFilter:
@@ -243,19 +243,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14305d1166cee4743ae4f114446a5a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LockWall: 0
   fuses:
   - On: 0
-    MeshRenderer: {fileID: 1432151122607543563}
+    MeshRenderer: {fileID: 3307623324028279496}
   - On: 0
     MeshRenderer: {fileID: 8789142280043219667}
+  - On: 0
+    MeshRenderer: {fileID: 1432151122607543563}
   - On: 0
     MeshRenderer: {fileID: 9064093492996761478}
   - On: 0
     MeshRenderer: {fileID: 8239444530991630065}
-  - On: 0
-    MeshRenderer: {fileID: 3307623324028279496}
   onMaterial: {fileID: 2100000, guid: 3f559d8971e9bac4ab7c749b78ecdce2, type: 2}
   offMaterial: {fileID: 2100000, guid: fd8dba7441808024b803def73c6e95bc, type: 2}
+  onPositionY: 0.02
+  offPositionY: -0.02
 --- !u!1 &6046146821296837378
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +272,7 @@ GameObject:
   - component: {fileID: 3307623324028279496}
   - component: {fileID: 5741054510098230426}
   m_Layer: 10
-  m_Name: Fuse5
+  m_Name: Fuse1
   m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +290,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 3372606403523567163}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2342438929507454362
 MeshFilter:
@@ -455,7 +458,7 @@ GameObject:
   - component: {fileID: 9064093492996761478}
   - component: {fileID: 7378677742526145993}
   m_Layer: 10
-  m_Name: Fuse3
+  m_Name: Fuse4
   m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +476,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 3372606403523567163}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6932013838382818553
 MeshFilter:
