@@ -52,4 +52,14 @@ public class RadioPlayer : MonoBehaviour
     {
         return AudioController.Instance.RadioStaticClips[Random.Range(0, AudioController.Instance.RadioStaticClips.Count)];
     }
+
+    public void ForceChangeMusicClip()
+    {
+        if (!didPlayRadioStaticSound)
+        {
+            audioSource.clip = GetRandomRadioStaticClip();
+            audioSource.Play();
+            didPlayRadioStaticSound = true;
+        }
+    }
 }

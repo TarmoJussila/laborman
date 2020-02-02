@@ -54,7 +54,14 @@ public class Grabber : MonoBehaviour
                 //holdingRb.AddForce(targetPos - holdingRb.transform.position * Time.deltaTime * DragForce);
             }*/
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (holdingRb.CompareTag("Radio"))
+                {
+                    holdingRb.GetComponent<RadioPlayer>().ForceChangeMusicClip();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
             {
                 Release();
             }
