@@ -1,7 +1,6 @@
 
-# GRAND PINE
-
-Welcome to the world of **Renovation Reiska**: Have a pipe leak? Is your gas pipe out of order? Is your fuse box acting weird? Have no fear! Renovation Reiska is here to help. With reasonable hourly wages, Renovation Reiska will solve your problems and repair your property. The game was created in 48 hours during the Global Game Jam / Finnish Game Jam 2020.
+# RENOVATION REISKA
+This is **Renovation Reiska**: Have a pipe leak? Is your gas pipe out of order? Is your fuse box acting weird? Have no fear! Renovation Reiska is here to help. With reasonable hourly wages, Renovation Reiska will solve your problems and repair your property. The game was created in 48 hours during the Global Game Jam / Finnish Game Jam 2020.
 
 # Watch
 
