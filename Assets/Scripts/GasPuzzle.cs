@@ -8,13 +8,13 @@ public class GasPuzzle : Puzzle
 
     public Transform Needle;
 
-    private int[] Powers;
+    public int[] Powers;
 
     public int TargetPower;
 
     public int CurrentTotalPower = 0;
 
-    public float RisktimeLeft = 10.0f;
+    public float RisktimeLeft = 15.0f;
 
     public GameObject RedLight;
     public Material GreenLight;
@@ -25,15 +25,24 @@ public class GasPuzzle : Puzzle
 
     public float needlePos = 0.0f;
 
-    private float needleMinX = -0.18f;
-    private float needleMaxX = 0.19f;
+    private float needleSafeMinX = -0.18f;
+    private float needleSafeMaxX = 0.027f;
+
+    private float needleRiskMinX = 0.11f;
+    private float needleRiskMaxX = 0.19f;
+
+    private float needleCorrectX = 0.075f;
+
 
     private Vector3 needleLocation;
 
     private void Start()
     {
+        needleLocation = Needle.transform.localPosition;
         List<GasPuzzleValve> UnusedValves = new List<GasPuzzleValve>(Valves);
         List<int> UnusedPowers = new List<int>(Powers);
+
+        TargetPower = Random.Range(1, 11);
 
         while (UnusedValves.Count > 0)
         {
@@ -48,11 +57,12 @@ public class GasPuzzle : Puzzle
 
     private void Update()
     {
-        if (CurrentTotalPower > TargetPower + 1 && !Lock)
+        /*if (CurrentTotalPower > TargetPower + 1 && !Lock)
         {
             RisktimeLeft -= Time.deltaTime;
             if (RisktimeLeft <= 0)
             {
+                Debug.LogWarning("locked!");
                 Lock = true;
                 //Explosion.Play();
                 AudioController.Instance.PlayAngrySoundClip();
@@ -61,11 +71,9 @@ public class GasPuzzle : Puzzle
                     valve.Locked = true;
                 }
             }
-        }
+        }*/
 
-        needleLocation = Needle.transform.position;
-        needleLocation.x = Mathf.Lerp(needleMinX, needleMaxX, needlePos);
-        Needle.transform.position = Vector3.Lerp(Needle.transform.position, needleLocation, 0.5f);
+        Needle.transform.localPosition = Vector3.Lerp(Needle.transform.localPosition, needleLocation, 0.5f);
 
     }
 
@@ -78,9 +86,24 @@ public class GasPuzzle : Puzzle
             if (valve.Active) CurrentTotalPower += valve.Power;
         }
 
-        needlePos = Mathf.InverseLerp(0, TargetPower + 1, CurrentTotalPower);
+        needlePos = Mathf.Clamp01(Mathf.InverseLerp(0, TargetPower + 4, CurrentTotalPower));
+        needleLocation = Needle.transform.localPosition;
+        if (CurrentTotalPower < TargetPower)
+        {
+            float needleSafeLocation = Mathf.InverseLerp(0, TargetPower - 1, CurrentTotalPower);
+            needleLocation.x = Mathf.Lerp(needleSafeMinX, needleSafeMaxX, needleSafeLocation);
+        }
+        else if (CurrentTotalPower == TargetPower)
+        {
+            needleLocation.x = needleCorrectX;
+            RedLight.GetComponent<MeshRenderer>().material = GreenLight;
+            if (CurrentTotalPower == TargetPower) Solved();
+        }
+        else if (CurrentTotalPower > TargetPower)
+        {
+            float needleRiskLocation = Mathf.InverseLerp(TargetPower + 1, 10, CurrentTotalPower);
+            needleLocation.x = Mathf.Lerp(needleRiskMinX, needleRiskMaxX, needleRiskLocation);
+        }
 
-        RedLight.GetComponent<MeshRenderer>().material = GreenLight;
-        if (CurrentTotalPower == TargetPower) Solved();
     }
 }

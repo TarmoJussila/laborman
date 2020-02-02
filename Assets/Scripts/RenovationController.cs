@@ -18,8 +18,31 @@ public class RenovationController : MonoBehaviour
     public GameObject[] RoomPrefabs;
     public GameObject[] RoomPuzzlePrefabs;
 
+    public List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
+
+    public float TimeLeft = 600.0f;
+    public UnityEngine.UI.Text TimeField;
+    public UnityEngine.UI.Text SalaryField;
+    public UnityEngine.UI.Text PenaltyField;
+
+    public string PlayerName;
+
     [SerializeField]
-    private List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
+    private GameObject startView;
+    [SerializeField]
+    private GameObject gameView;
+    [SerializeField]
+    private GameObject scoreView;
+
+    public readonly int BaseSalary = 10000;
+    public readonly int PenaltyPerMinute = 100;
+    public readonly int PenaltyPerUnusedProp = 50;
+    public readonly int PenaltyPerUnfinishedJob = 2000;
+    public readonly int PenaltyPerDeath = 5000;
+
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController PlayerController;
+
+    public GameState CurrentGameState { get; private set; }
 
     private void Awake()
     {
@@ -29,8 +52,48 @@ public class RenovationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetGameState(GameState.Start);
+        //StartGame();
+    }
+
+    private void Update()
+    {
+        TimeLeft -= Time.deltaTime;
+        int totalseconds = Mathf.FloorToInt(TimeLeft);
+        int minutes = Mathf.FloorToInt(totalseconds / 60);
+        int seconds = Mathf.FloorToInt(totalseconds % 60);
+
+        TimeField.text = (minutes > 9 ? "" + minutes : "0" + minutes) + ":" + (seconds > 9 ? "" + seconds : "0" + seconds);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EndGame(false);
+        }
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.O))
+#else
+        if (Input.GetKeyDown(KeyCode.Escape))
+#endif
+        {
+            StartCoroutine(restart());
+        }
+    }
+
+    IEnumerator restart()
+    {
+        PlayerController.enabled = false;
+        yield return null;
+        PlayerController.ToggleMouseLock(false);
+        yield return null;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void StartGame()
+    {
         RandomizeWalls();
         RandomizeRooms();
+        SetGameState(GameState.Game);
     }
 
     public void RegisterWall(HouseWall wall)
@@ -41,6 +104,12 @@ public class RenovationController : MonoBehaviour
     public void RegisterRoom(PuzzleRoom room)
     {
         Rooms.Add(room);
+    }
+
+    public void SetPlayerName(string name)
+    {
+        PlayerName = name;
+        Random.seed = name.GetHashCode();
     }
 
     private void RandomizeWalls()
@@ -58,9 +127,7 @@ public class RenovationController : MonoBehaviour
 
     private void RandomizeRooms()
     {
-        Debug.Log("randomize rooms");
         List<PuzzleRoom> UnusedRooms = new List<PuzzleRoom>(Rooms);
-        Debug.Log("unused rooms count " + UnusedRooms.Count);
         for (int i = 0; i < RoomPuzzles; i++)
         {
             int index = Random.Range(0, UnusedRooms.Count);
@@ -72,7 +139,6 @@ public class RenovationController : MonoBehaviour
         }
         while (UnusedRooms.Count > 0)
         {
-            Debug.Log("decorate rooms");
             PuzzleRoom room = UnusedRooms[0];
             UnusedRooms.Remove(room);
             room.SpawnRoom();
@@ -82,6 +148,76 @@ public class RenovationController : MonoBehaviour
     public void SolvePuzzle(Puzzle puzzle)
     {
         UnsolvedPuzzles.Remove(puzzle);
+        if (UnsolvedPuzzles.Count == 0)
+        {
+            EndGame(true);
+        }
     }
 
+    public void Die()
+    {
+        EndGame(false);
+    }
+
+    public void EndGame(bool win)
+    {
+        int salary = BaseSalary;
+        int unfinishedPenalty = UnsolvedPuzzles.Count * PenaltyPerUnfinishedJob;
+        salary -= unfinishedPenalty;
+
+        int timePenalty = 0;
+
+        if (TimeLeft < 0)
+        {
+            float overtime = Mathf.Abs(TimeLeft);
+            int minutes = Mathf.FloorToInt(overtime / 60);
+            timePenalty = minutes * PenaltyPerMinute;
+            salary -= timePenalty;
+        }
+
+        SalaryField.text = salary.ToString() + "€";
+        PenaltyField.text = "Time penalty: " + timePenalty.ToString() + "€\n" + "Unfinished jobs penalty: " + unfinishedPenalty.ToString() + "€";
+
+
+        SetGameState(GameState.Score);
+    }
+
+    public void SetGameState(GameState state)
+    {
+        CurrentGameState = state;
+        switch (state)
+        {
+            case GameState.Start:
+                {
+                    PlayerController.enabled = false;
+                    startView.SetActive(true);
+                    gameView.SetActive(false);
+                    scoreView.SetActive(false);
+                    break;
+                }
+            case GameState.Game:
+                {
+                    PlayerController.enabled = true;
+                    startView.SetActive(false);
+                    gameView.SetActive(true);
+                    scoreView.SetActive(false);
+                    break;
+                }
+            case GameState.Score:
+                {
+                    PlayerController.enabled = false;
+                    startView.SetActive(false);
+                    gameView.SetActive(false);
+                    scoreView.SetActive(true);
+                    break;
+                }
+        }
+
+    }
+}
+public enum GameState
+{
+    Start = 0,
+    Game,
+    Score
 }
