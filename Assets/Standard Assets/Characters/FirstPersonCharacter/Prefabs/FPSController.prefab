@@ -305,6 +305,9 @@ MonoBehaviour:
   GrabbableLayer:
     serializedVersion: 2
     m_Bits: 256
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   DragForce: 1
   dragCurve:
     serializedVersion: 2

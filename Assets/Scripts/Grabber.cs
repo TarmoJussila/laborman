@@ -7,6 +7,7 @@ public class Grabber : MonoBehaviour
     public static Grabber Instance { get; private set; }
 
     public LayerMask GrabbableLayer;
+    public LayerMask InteractableLayer;
     public float DragForce = 100.0f;
 
     private bool holding = false;
@@ -66,18 +67,22 @@ public class Grabber : MonoBehaviour
                     pipe.Grabbed = true;
                 }
             }
+            else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistance, InteractableLayer))
+            {
+                if (hit.collider.CompareTag("Electric"))
+                {
+                    hit.collider.GetComponentInParent<ElectricPuzzle>().ToggleFuse(hit.transform.name);
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("R");
             RaycastHit rayhit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayhit, maxDistance, GrabbableLayer))
             {
-                Debug.Log("Raycast");
                 if (rayhit.collider.tag.IndexOf("Pipe") > -1)
                 {
-                    Debug.Log("Ray found pipe");
                     rayhit.collider.GetComponent<PuzzlePipe>().AttachedBlock.Rotate();
                 }
             }

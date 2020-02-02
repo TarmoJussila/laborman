@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 876885483614350753}
   - component: {fileID: 1432151122607543563}
   - component: {fileID: 8744711213012952235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse1
-  m_TagString: Untagged
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,9 +118,9 @@ GameObject:
   - component: {fileID: 2752095470221178823}
   - component: {fileID: 8239444530991630065}
   - component: {fileID: 3249195776006958269}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse4
-  m_TagString: Untagged
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,6 +243,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14305d1166cee4743ae4f114446a5a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuses:
+  - On: 0
+    MeshRenderer: {fileID: 1432151122607543563}
+  - On: 0
+    MeshRenderer: {fileID: 8789142280043219667}
+  - On: 0
+    MeshRenderer: {fileID: 9064093492996761478}
+  - On: 0
+    MeshRenderer: {fileID: 8239444530991630065}
+  - On: 0
+    MeshRenderer: {fileID: 3307623324028279496}
+  onMaterial: {fileID: 2100000, guid: 3f559d8971e9bac4ab7c749b78ecdce2, type: 2}
+  offMaterial: {fileID: 2100000, guid: fd8dba7441808024b803def73c6e95bc, type: 2}
 --- !u!1 &6046146821296837378
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,9 +268,9 @@ GameObject:
   - component: {fileID: 2342438929507454362}
   - component: {fileID: 3307623324028279496}
   - component: {fileID: 5741054510098230426}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse5
-  m_TagString: Untagged
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,9 +361,9 @@ GameObject:
   - component: {fileID: 3916561284552253572}
   - component: {fileID: 8789142280043219667}
   - component: {fileID: 6860461826479769100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse2
-  m_TagString: Untagged
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,9 +454,9 @@ GameObject:
   - component: {fileID: 6932013838382818553}
   - component: {fileID: 9064093492996761478}
   - component: {fileID: 7378677742526145993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse3
-  m_TagString: Untagged
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -532,6 +545,11 @@ PrefabInstance:
     - target: {fileID: 4654840733363815637, guid: 0cef5c68ca909f5419a0f886ae979556,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654840733363815647, guid: 0cef5c68ca909f5419a0f886ae979556,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4654840733363919093, guid: 0cef5c68ca909f5419a0f886ae979556,

@@ -8,6 +8,7 @@ TagManager:
   - PipeBlock
   - StraightPipe
   - CornerPipe
+  - Electric
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Grabbable
   - Player
-  - 
+  - Interactable
   - 
   - 
   - 
