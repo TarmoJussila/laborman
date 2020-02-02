@@ -49,7 +49,7 @@ public class HouseWall : MonoBehaviour
         Puzzle puzzle = instance.GetComponent<Puzzle>();
         if (puzzle.LockWall)
         {
-            target.gameObject.layer = 0;
+            target.gameObject.transform.GetChild(0).gameObject.layer = 0;
         }
         return puzzle;
     }
