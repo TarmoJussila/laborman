@@ -174,12 +174,23 @@ public class RenovationController : MonoBehaviour
             timePenalty = minutes * PenaltyPerMinute;
             salary -= timePenalty;
         }
-
+        
         SalaryField.text = salary.ToString() + "€";
         PenaltyField.text = "Time penalty: " + timePenalty.ToString() + "€\n" + "Unfinished jobs penalty: " + unfinishedPenalty.ToString() + "€";
 
-
         SetGameState(GameState.Score);
+
+        if (salary > 0)
+        {
+            AudioController.Instance.PlayPleasedSoundClip();
+            AudioController.Instance.PlaySuccessSoundClip();
+        }
+        else
+        {
+            AudioController.Instance.PlayAngrySoundClip();
+            AudioController.Instance.PlayFailureSoundClip();
+            SalaryField.color = Color.red;
+        }
     }
 
     public void SetGameState(GameState state)

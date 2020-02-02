@@ -61,7 +61,7 @@ public class PipePuzzle : Puzzle
         while (keepChecking)
         {
             int[] nextCell = GetNextCell(lastCell, previousExit);
-           
+
             if (nextCell[0] == 3 && nextCell[1] == 3)
             {
                 win = true;
@@ -84,6 +84,11 @@ public class PipePuzzle : Puzzle
         }
         if (win)
         {
+            foreach (PipePuzzleBlock block in Blocks)
+            {
+                if (block.PipeObject)
+                    block.PipeObject.GetComponent<BoxCollider>().enabled = false;
+            }
             redLight.GetComponent<MeshRenderer>().material = greenMat;
             Solved();
         }
