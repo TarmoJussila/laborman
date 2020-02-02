@@ -17,9 +17,8 @@ public class RenovationController : MonoBehaviour
     public GameObject[] PuzzlePrefabs;
     public GameObject[] RoomPrefabs;
     public GameObject[] RoomPuzzlePrefabs;
-
-    [SerializeField]
-    private List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
+    
+    public List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
 
     private void Awake()
     {
@@ -58,9 +57,7 @@ public class RenovationController : MonoBehaviour
 
     private void RandomizeRooms()
     {
-        Debug.Log("randomize rooms");
         List<PuzzleRoom> UnusedRooms = new List<PuzzleRoom>(Rooms);
-        Debug.Log("unused rooms count " + UnusedRooms.Count);
         for (int i = 0; i < RoomPuzzles; i++)
         {
             int index = Random.Range(0, UnusedRooms.Count);
@@ -72,7 +69,6 @@ public class RenovationController : MonoBehaviour
         }
         while (UnusedRooms.Count > 0)
         {
-            Debug.Log("decorate rooms");
             PuzzleRoom room = UnusedRooms[0];
             UnusedRooms.Remove(room);
             room.SpawnRoom();

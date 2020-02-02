@@ -47,4 +47,9 @@ MonoBehaviour:
   RoomPuzzles: 0
   PuzzlePrefabs:
   - {fileID: 459885344473700205, guid: 2dcc7b7a0e58e0d48825fa7c15ee303f, type: 3}
+  - {fileID: 459885344473700205, guid: c0bb2e4a10698ec49907173e2b94df73, type: 3}
+  RoomPrefabs:
+  - {fileID: 5292230133993081096, guid: b4134f6907e05f84aacb71c8118cc914, type: 3}
+  - {fileID: 6060721638170060433, guid: a5dcf64f2825c844081db79b8cf07dd8, type: 3}
+  RoomPuzzlePrefabs: []
   UnsolvedPuzzles: []

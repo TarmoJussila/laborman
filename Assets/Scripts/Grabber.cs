@@ -36,7 +36,7 @@ public class Grabber : MonoBehaviour
             float distance = Vector3.Distance(holdingRb.transform.position, targetPos);
             Vector3 dir = targetPos - holdingRb.position;
             holdingRb.velocity = dir * dragCurve.Evaluate(distance);
-            holdingRb.transform.forward = Camera.main.transform.forward;
+            holdingRb.transform.forward = -Camera.main.transform.forward;
 
             var mouseScroll = Input.mouseScrollDelta.y;
 
@@ -128,7 +128,7 @@ public class Grabber : MonoBehaviour
             PuzzlePipe pipe = holdingRb.GetComponent<PuzzlePipe>();
             pipe.Grabbed = false;
         }
-        holdingRb.AddForce(transform.forward * 10f, ForceMode.Impulse);
+        holdingRb.AddForce(Camera.main.transform.forward * 10f, ForceMode.Impulse);
         holdingRb = null;
         AudioController.Instance.PlayThrowSoundClip();
     }

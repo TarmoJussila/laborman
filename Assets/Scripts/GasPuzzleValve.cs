@@ -20,7 +20,7 @@ public class GasPuzzleValve : MonoBehaviour
 
     private IEnumerator Rotate()
     {
-        float dir = Active ? 1.0f : 0.0f;
+        float dir = Active ? -1.0f : 1.0f;
         rotating = true;
         float t = 0.0f;
         Quaternion initial = transform.rotation;
@@ -38,6 +38,7 @@ public class GasPuzzleValve : MonoBehaviour
 
         rotating = false;
         Active = !Active;
+        Debug.Log(RelatedPuzzle);
         RelatedPuzzle.CheckCompletion();
     }
 
