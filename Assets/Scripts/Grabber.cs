@@ -126,5 +126,6 @@ public class Grabber : MonoBehaviour
         }
         holdingRb.AddForce(transform.forward * 10f, ForceMode.Impulse);
         holdingRb = null;
+        AudioController.Instance.PlayThrowSoundClip();
     }
 }

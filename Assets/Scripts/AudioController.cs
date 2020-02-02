@@ -11,12 +11,17 @@ public class AudioController : MonoBehaviour
     public List<AudioClip> RadioStaticClips { get { return radioStaticClips; } }
 
     [SerializeField] private AudioSource playerAudioSource;
+
+    // Radio audio source.
     [SerializeField] private List<AudioClip> musicClips = new List<AudioClip>();
     [SerializeField] private List<AudioClip> radioStaticClips = new List<AudioClip>();
+
+    // Player audio source.
     [SerializeField] private List<AudioClip> angrySounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> pleasedSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> thinkingSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> windUpSounds = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> throwSounds = new List<AudioClip>();
 
     private void Update()
     {
@@ -64,5 +69,10 @@ public class AudioController : MonoBehaviour
     public void PlayWindUpSoundClip()
     {
         playerAudioSource.PlayOneShot(windUpSounds[Random.Range(0, windUpSounds.Count)]);
+    }
+
+    public void PlayThrowSoundClip()
+    {
+        playerAudioSource.PlayOneShot(throwSounds[Random.Range(0, throwSounds.Count)]);
     }
 }

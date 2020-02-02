@@ -81,3 +81,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b2b685455347499b9eddaf64e0c0816, type: 3}
   - {fileID: 8300000, guid: 4dfbbe7f7a1464c7a9b6877b746798aa, type: 3}
   - {fileID: 8300000, guid: 14c9d74b083c6438dbaa922c125575bb, type: 3}
+  throwSounds:
+  - {fileID: 8300000, guid: 819c7a3a32af44953b98802c0b32d851, type: 3}
+  - {fileID: 8300000, guid: 5aa39130bbc104d7ab8fd228882b8e98, type: 3}
