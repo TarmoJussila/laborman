@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9138464832344788613}
   - component: {fileID: 9138464832344788614}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RenovationController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4e0963a404f2748a0440a97136390f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalPuzzles: 0
-  PuzzlePrefabs: []
+  WallPuzzles: 6
+  RoomPuzzles: 0
+  PuzzlePrefabs:
+  - {fileID: 459885344473700205, guid: 2dcc7b7a0e58e0d48825fa7c15ee303f, type: 3}
+  UnsolvedPuzzles: []

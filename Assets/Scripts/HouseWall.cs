@@ -44,9 +44,13 @@ public class HouseWall : MonoBehaviour
             target = InnerPanels[Random.Range(0, InnerPanels.Count)];
         }
 
-
         instance.transform.position = target.transform.position;
         instance.transform.forward = target.transform.forward;
-        return instance.GetComponent<Puzzle>();
+        Puzzle puzzle = instance.GetComponent<Puzzle>();
+        if (puzzle.LockWall)
+        {
+            target.gameObject.layer = 0;
+        }
+        return puzzle;
     }
 }
