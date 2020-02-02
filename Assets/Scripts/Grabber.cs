@@ -11,13 +11,16 @@ public class Grabber : MonoBehaviour
     public float DragForce = 100.0f;
 
     private bool holding = false;
-    private readonly float maxDistance = 3.0f;
-    private readonly float holdDistance = 2.6f;
+    private float holdDistance = 2.5f;
     private RaycastHit hit;
     private Rigidbody holdingRb;
 
     [SerializeField]
     private AnimationCurve dragCurve;
+
+    private readonly float maxDistance = 3.0f;
+    private readonly float holdDistanceMin = 1.4f;
+    private readonly float holdDistanceMax = 2.8f;
 
     private void Awake()
     {
@@ -34,6 +37,11 @@ public class Grabber : MonoBehaviour
             Vector3 dir = targetPos - holdingRb.position;
             holdingRb.velocity = dir * dragCurve.Evaluate(distance);
             holdingRb.transform.forward = Camera.main.transform.forward;
+
+            var mouseScroll = Input.mouseScrollDelta.y;
+
+            holdDistance -= mouseScroll * Time.deltaTime * 2f;
+            holdDistance = Mathf.Clamp(holdDistance, holdDistanceMin, holdDistanceMax);
 
             //holdingRb.transform.position = Vector3.Lerp(holdingRb.transform.position, targetPos, 0.5f);
             /*if (distance > 2)
