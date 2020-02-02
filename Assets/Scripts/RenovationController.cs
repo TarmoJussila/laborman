@@ -76,8 +76,17 @@ public class RenovationController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
 #endif
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            StartCoroutine(restart());
         }
+    }
+
+    IEnumerator restart()
+    {
+        PlayerController.enabled = false;
+        yield return null;
+        PlayerController.ToggleMouseLock(false);
+        yield return null;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void StartGame()
