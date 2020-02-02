@@ -20,7 +20,7 @@ public class RenovationController : MonoBehaviour
 
     public List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
 
-    public float TimeLeft = 600.0f;
+    public float TimeLeft = 6.0f;
     public UnityEngine.UI.Text TimeField;
     public UnityEngine.UI.Text SalaryField;
     public UnityEngine.UI.Text PenaltyField;
@@ -65,7 +65,15 @@ public class RenovationController : MonoBehaviour
             int minutes = Mathf.FloorToInt(totalseconds / 60);
             int seconds = Mathf.FloorToInt(totalseconds % 60);
 
-            TimeField.text = (minutes > 9 ? "" + minutes : "0" + minutes) + ":" + (seconds > 9 ? "" + seconds : "0" + seconds);
+            if (TimeLeft > 0)
+            {
+                TimeField.text = (minutes > 9 ? "" + minutes : "0" + minutes) + ":" + (seconds > 9 ? "" + seconds : "0" + seconds);
+            }
+            else
+            {
+                TimeField.color = Color.red;
+                TimeField.text = "00:00";
+            }
         }
 
 #if UNITY_EDITOR
@@ -176,11 +184,11 @@ public class RenovationController : MonoBehaviour
         if (TimeLeft < 0)
         {
             float overtime = Mathf.Abs(TimeLeft);
-            int minutes = Mathf.FloorToInt(overtime / 60);
+            int minutes = Mathf.CeilToInt(overtime / 60);
             timePenalty = minutes * PenaltyPerMinute;
             salary -= timePenalty;
         }
-        
+
         SalaryField.text = salary.ToString() + "€";
         PenaltyField.text = "Time penalty: " + timePenalty.ToString() + "€\n" + "Unfinished jobs penalty: " + unfinishedPenalty.ToString() + "€";
 
