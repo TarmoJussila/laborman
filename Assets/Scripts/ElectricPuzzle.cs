@@ -55,8 +55,14 @@ public class ElectricPuzzle : Puzzle
     {
         for (int i = 0; i < 5; i++)
         {
+            int siblingIndex = transform.GetSiblingIndex();
+            int originalSeed = Random.seed;
+            Random.seed = originalSeed + siblingIndex + i;
+
             var randomFuseIndex = Random.Range(0, 5);
             fuses[i].Initialize(fuses[randomFuseIndex], i, randomFuseIndex);
+
+            Random.seed = originalSeed;
         }
 
         // Scramble fuse box at start.

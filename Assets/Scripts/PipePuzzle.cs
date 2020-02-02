@@ -25,6 +25,8 @@ public class PipePuzzle : Puzzle
     // Start is called before the first frame update
     void Start()
     {
+        int siblingIndex = transform.GetSiblingIndex();
+
         for (int i = 0; i < PuzzleBlocks.Length; i++)
         {
             PipePuzzleBlock block = PuzzleBlocks[i].GetComponent<PipePuzzleBlock>();
@@ -45,10 +47,13 @@ public class PipePuzzle : Puzzle
             block.SetType(BlockType.AlwaysEmpty);
         }
 
+        int originalSeed = Random.seed;
         for (int i = 0; i < 2; i++)
         {
+            Random.seed = originalSeed + siblingIndex + i;
             PossibleObstacles[Random.Range(0, PossibleObstacles.Length)].SetType(BlockType.Obstacle);
         }
+        Random.seed = originalSeed;
 
     }
 

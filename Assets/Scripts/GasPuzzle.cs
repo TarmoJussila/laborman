@@ -42,17 +42,26 @@ public class GasPuzzle : Puzzle
         List<GasPuzzleValve> UnusedValves = new List<GasPuzzleValve>(Valves);
         List<int> UnusedPowers = new List<int>(Powers);
 
+        int siblingIndex = transform.GetSiblingIndex();
+        int originalSeed = Random.seed;
+        Random.seed = originalSeed + siblingIndex;
+
         TargetPower = Random.Range(1, 11);
 
+        int i = 0;
         while (UnusedValves.Count > 0)
         {
+            i++;
             GasPuzzleValve valve = UnusedValves[0];
             UnusedValves.Remove(valve);
+            Random.seed = originalSeed + siblingIndex + i;
             int index = Random.Range(0, UnusedPowers.Count);
             valve.Power = UnusedPowers[index];
             UnusedPowers.RemoveAt(index);
             valve.RelatedPuzzle = this;
         }
+
+        Random.seed = originalSeed;
     }
 
     private void Update()

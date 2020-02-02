@@ -58,12 +58,15 @@ public class RenovationController : MonoBehaviour
 
     private void Update()
     {
-        TimeLeft -= Time.deltaTime;
-        int totalseconds = Mathf.FloorToInt(TimeLeft);
-        int minutes = Mathf.FloorToInt(totalseconds / 60);
-        int seconds = Mathf.FloorToInt(totalseconds % 60);
+        if (CurrentGameState == GameState.Game)
+        {
+            TimeLeft -= Time.deltaTime;
+            int totalseconds = Mathf.FloorToInt(TimeLeft);
+            int minutes = Mathf.FloorToInt(totalseconds / 60);
+            int seconds = Mathf.FloorToInt(totalseconds % 60);
 
-        TimeField.text = (minutes > 9 ? "" + minutes : "0" + minutes) + ":" + (seconds > 9 ? "" + seconds : "0" + seconds);
+            TimeField.text = (minutes > 9 ? "" + minutes : "0" + minutes) + ":" + (seconds > 9 ? "" + seconds : "0" + seconds);
+        }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -94,6 +97,7 @@ public class RenovationController : MonoBehaviour
         RandomizeWalls();
         RandomizeRooms();
         SetGameState(GameState.Game);
+        Random.seed = (int)Time.time;
     }
 
     public void RegisterWall(HouseWall wall)
