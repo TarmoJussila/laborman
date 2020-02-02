@@ -49,10 +49,7 @@ public class Grabber : MonoBehaviour
                     AudioController.Instance.PlayBeerSoundClip();
                     ThrowUpRelease();
                 }
-            }
-            else if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (holdingRb.CompareTag("Radio"))
+                else if (holdingRb.CompareTag("Radio"))
                 {
                     holdingRb.GetComponent<RadioPlayer>().ForceChangeMusicClip();
                 }
