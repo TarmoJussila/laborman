@@ -95,3 +95,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5dbbf6bfa66004e2185887cad223d311, type: 3}
   - {fileID: 8300000, guid: ffb919c00b09f4ce6802a13f4b499433, type: 3}
   - {fileID: 8300000, guid: 3998824d295754c51aee063251ed879f, type: 3}
+  failureSound: {fileID: 8300000, guid: 368fc131b2051411eb973e99e7609760, type: 3}
