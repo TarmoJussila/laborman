@@ -81,6 +81,10 @@ public class Grabber : MonoBehaviour
                 {
                     hit.collider.GetComponentInParent<ElectricPuzzle>().ToggleFuse(hit.transform.name);
                 }
+                else if (hit.collider.CompareTag("Valve"))
+                {
+                    hit.collider.GetComponentInParent<GasPuzzleValve>().Interact();
+                }
             }
         }
 

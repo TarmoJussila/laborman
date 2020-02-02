@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PuzzleRoom : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         RenovationController.Instance.RegisterRoom(this);
     }

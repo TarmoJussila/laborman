@@ -8,6 +8,7 @@ public class Puzzle : MonoBehaviour
 
     public void Solved()
     {
+        AudioController.Instance.PlayPleasedSoundClip();
         RenovationController.Instance.SolvePuzzle(this);
     }
 }

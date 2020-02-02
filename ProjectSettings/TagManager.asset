@@ -9,6 +9,7 @@ TagManager:
   - StraightPipe
   - CornerPipe
   - Electric
+  - Valve
   layers:
   - Default
   - TransparentFX

@@ -58,7 +58,9 @@ public class RenovationController : MonoBehaviour
 
     private void RandomizeRooms()
     {
+        Debug.Log("randomize rooms");
         List<PuzzleRoom> UnusedRooms = new List<PuzzleRoom>(Rooms);
+        Debug.Log("unused rooms count " + UnusedRooms.Count);
         for (int i = 0; i < RoomPuzzles; i++)
         {
             int index = Random.Range(0, UnusedRooms.Count);
@@ -70,6 +72,7 @@ public class RenovationController : MonoBehaviour
         }
         while (UnusedRooms.Count > 0)
         {
+            Debug.Log("decorate rooms");
             PuzzleRoom room = UnusedRooms[0];
             UnusedRooms.Remove(room);
             room.SpawnRoom();
