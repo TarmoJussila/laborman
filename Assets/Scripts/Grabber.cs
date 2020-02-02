@@ -58,6 +58,10 @@ public class Grabber : MonoBehaviour
             {
                 Release();
             }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                ThrowRelease();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
@@ -112,5 +116,20 @@ public class Grabber : MonoBehaviour
             pipe.Grabbed = false;
         }
         holdingRb = null;
+    }
+
+    public void ThrowRelease()
+    {
+        if (!holdingRb) return;
+        holding = false;
+        holdingRb.useGravity = true;
+        if (holdingRb.tag.IndexOf("Pipe") > -1)
+        {
+            PuzzlePipe pipe = holdingRb.GetComponent<PuzzlePipe>();
+            pipe.Grabbed = false;
+        }
+        holdingRb.AddForce(transform.forward * 10f, ForceMode.Impulse);
+        holdingRb = null;
+        AudioController.Instance.PlayThrowSoundClip();
     }
 }
