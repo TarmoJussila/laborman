@@ -67,6 +67,22 @@ public class ElectricPuzzle : Puzzle
                 fuses[i].Toggle(onMaterial, offMaterial, onPositionY, offPositionY);
             }
         }
+
+        // Make sure all not on at start.
+        bool areAllOn = true;
+        for (int i = 0; i < 5; i++)
+        {
+            if (!fuses[i].On)
+            {
+                areAllOn = false;
+                break;
+            }
+        }
+
+        if (areAllOn)
+        {
+            fuses[2].Toggle(onMaterial, offMaterial, onPositionY, offPositionY);
+        }
     }
 
     public void ToggleFuse(string fuseName)
