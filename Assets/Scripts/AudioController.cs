@@ -22,6 +22,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] private List<AudioClip> thinkingSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> windUpSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> throwSounds = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> valveSounds = new List<AudioClip>();
 
     private void Update()
     {
@@ -74,5 +75,10 @@ public class AudioController : MonoBehaviour
     public void PlayThrowSoundClip()
     {
         playerAudioSource.PlayOneShot(throwSounds[Random.Range(0, throwSounds.Count)]);
+    }
+
+    public void PlayValveSoundClip()
+    {
+        playerAudioSource.PlayOneShot(valveSounds[Random.Range(0, valveSounds.Count)]);
     }
 }

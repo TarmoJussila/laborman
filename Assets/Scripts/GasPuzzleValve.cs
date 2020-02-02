@@ -20,6 +20,7 @@ public class GasPuzzleValve : MonoBehaviour
 
     private IEnumerator Rotate()
     {
+        AudioController.Instance.PlayValveSoundClip();
         float dir = Active ? -1.0f : 1.0f;
         rotating = true;
         float t = 0.0f;
