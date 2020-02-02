@@ -7,12 +7,15 @@ public class RenovationController : MonoBehaviour
     public static RenovationController Instance { get; private set; }
 
     [SerializeField]
-    private int TotalPuzzles;
+    private int WallPuzzles;
+    [SerializeField]
+    private int RoomPuzzles;
 
     List<HouseWall> Walls = new List<HouseWall>();
 
     public GameObject[] PuzzlePrefabs;
 
+    [SerializeField]
     private List<Puzzle> UnsolvedPuzzles = new List<Puzzle>();
 
     private void Awake()
@@ -34,7 +37,7 @@ public class RenovationController : MonoBehaviour
     private void RandomizeWalls()
     {
         List<HouseWall> UnusedWalls = new List<HouseWall>(Walls);
-        for (int i = 0; i < TotalPuzzles; i++)
+        for (int i = 0; i < WallPuzzles; i++)
         {
             int index = Random.Range(0, UnusedWalls.Count);
             HouseWall wall = UnusedWalls[index];

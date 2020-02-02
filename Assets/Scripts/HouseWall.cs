@@ -30,6 +30,23 @@ public class HouseWall : MonoBehaviour
 
     public Puzzle SpawnPuzzle()
     {
-        return new Puzzle();
+        GameObject prefab = RenovationController.Instance.PuzzlePrefabs[Random.Range(0, RenovationController.Instance.PuzzlePrefabs.Length)];
+        GameObject instance = Instantiate(prefab);
+
+        WallPanel target;
+        if (CanBeWindow)
+        {
+            float roll = Random.Range(0.0f, 1.0f);
+            target = roll < 0.5f ? InnerPanels[0] : InnerPanels[2];
+        }
+        else
+        {
+            target = InnerPanels[Random.Range(0, InnerPanels.Count)];
+        }
+
+
+        instance.transform.position = target.transform.position;
+        instance.transform.forward = target.transform.forward;
+        return instance.GetComponent<Puzzle>();
     }
 }
