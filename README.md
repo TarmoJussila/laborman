@@ -28,7 +28,7 @@ The game was created with **Unity 2019.3.0f6**.
 | Move Right | D |
 | Interact | E |
 | Rotate | R |
-| Exit | Escape |
+| Restart | Escape |
 
 # Credits - Team Labormen
 
