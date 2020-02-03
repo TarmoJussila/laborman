@@ -75,13 +75,12 @@ public class RenovationController : MonoBehaviour
                 TimeField.text = "00:00";
             }
         }
-
-#if UNITY_EDITOR
+        
         if (Input.GetKeyDown(KeyCode.P) && CurrentGameState == GameState.Game)
         {
             EndGame(false);
         }
-#endif
+
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O) && CurrentGameState == GameState.Game)
