@@ -2,13 +2,9 @@
 # RENOVATION REISKA
 This is **Renovation Reiska**: Have a pipe leak? Is your gas pipe out of order? Is your fuse box acting weird? Have no fear! Renovation Reiska is here to help. With reasonable hourly wages, Renovation Reiska will solve your problems and repair your property. The game was created in 48 hours during the Global Game Jam / Finnish Game Jam 2020.
 
-# Watch
-
-Gameplay video: [**Watch**]()
-
 # Download
 
-Executable (Windows/macOS): [**Download**]()
+Executable (Windows): [**Download**](https://ggj.s3.amazonaws.com/games/2020/02/219459/exec/SClK4/Reiska.zip)
 
 # Build
 
